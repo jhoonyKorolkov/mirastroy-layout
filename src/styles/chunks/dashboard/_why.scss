@@ -1,0 +1,88 @@
+@use '../../globals' as mixins;
+
+.why {
+    padding: 80px 0;
+    width: 100%;
+    position: relative;
+    background: #f0f0f0;
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 328px 1fr;
+        grid-gap: 80px;
+        position: relative;
+    }
+
+    &__title {
+        margin-bottom: 40px;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 24px 40px;
+    }
+
+    &__item {
+        &-title {
+            font-weight: bold;
+            font-family: mixins.$font-secondary;
+            margin-bottom: 8px;
+            @include mixins.type(20, 30);
+        }
+        &:last-child {
+            grid-column: 1/3;
+        }
+    }
+
+    &__action {
+        @include mixins.btn();
+        & {
+            padding-left: 68px;
+            padding-right: 68px;
+            height: 72px;
+            width: auto;
+            margin-top: 32px;
+        }
+    }
+
+    &__blog {
+        &-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        &-video {
+            width: 100%;
+            max-width: 328px; // ограничение по ширине
+            aspect-ratio: 3 / 4; // вертикальное соотношение (Snapchat/TikTok/Stories)
+            border-radius: 16px;
+            object-fit: cover; // обрезает края, сохраняя пропорции
+            background: #000;
+        }
+        &-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-cite {
+            color: #4f4f4f;
+            margin-bottom: 8px;
+        }
+        &-name {
+            color: #9a9a9a;
+            @include mixins.type(14, 20);
+        }
+    }
+}

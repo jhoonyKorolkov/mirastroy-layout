@@ -1,0 +1,32 @@
+/* wix-madefor-display-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/wix-madefor-display-v11-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* wix-madefor-display-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/wix-madefor-display-v11-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* wix-madefor-display-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/wix-madefor-display-v11-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Murs Gothic";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/MursGothic-WideDark.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}

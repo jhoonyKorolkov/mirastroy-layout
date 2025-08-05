@@ -1,0 +1,19 @@
+@charset "UTF-8";
+:root {
+  --text: #4f4f4f;
+  --title: #383838;
+  --main: #ffe500;
+  --ltext: #9a9a9a;
+  --bg: #fff;
+}
+
+.select-reset {
+  /* Сбрасываем нативный вид */
+  -webkit-appearance: none; /* Chrome, Safari, Edge на WebKit/Blink */
+  -moz-appearance: none; /* Firefox */
+  appearance: none; /* современный стандарт */
+  /* Для IE/Edge (старых) скрываем стрелку */
+}
+.select-reset::-ms-expand {
+  display: none;
+}

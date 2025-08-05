@@ -1,0 +1,78 @@
+@use "../../globals" as mixins;
+
+.breads {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  margin-top: 80px;
+  margin-bottom: -40px;
+
+  @include mixins.respond-max(phone) {
+    margin: 40px 0 20px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__box {
+    display: flex;
+    position: relative;
+    color: var(--text);
+    align-items: center;
+    transition: 0.2s;
+
+    span {
+      color: #ababab;
+      max-width: 350px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+
+      @include mixins.respond-max(phone) {
+        font-size: 12px;
+        max-width: 200px;
+        line-height: normal;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+
+    &::after {
+      content: " ";
+      margin: 0 10px;
+      width: 13px;
+      height: 1px;
+      background: #ababab;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    span {
+      color: #ababab;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 14px;
+
+      @include mixins.respond-max(phone) {
+        font-size: 12px;
+      }
+    }
+
+    &:hover {
+      span {
+        color: var(--link);
+      }
+    }
+  }
+}

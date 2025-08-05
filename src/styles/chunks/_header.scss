@@ -1,0 +1,97 @@
+@use '../globals' as mixins;
+
+.header {
+    box-shadow: 0px 0px 16px 0px #3838383d;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    &__box {
+        display: flex;
+        align-items: center;
+        padding: 18px 0;
+        gap: 40px;
+        position: relative;
+    }
+
+    &__city {
+        margin-right: auto;
+        display: flex;
+        color: var(--ltext);
+        text-transform: uppercase;
+        @include mixins.type(12, 20);
+    }
+
+    &__logo {
+        flex-shrink: 0;
+        display: flex;
+    }
+
+    &__phone,
+    &__chat,
+    &__burger {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        @include mixins.type(12, 20);
+        & .icon {
+            flex-shrink: 0;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    &__dropdown {
+        position: absolute;
+        right: 0;
+        top: 100%;
+        width: 456px;
+        background: #38383899;
+        backdrop-filter: blur(24px);
+        padding: 30px 40px 40px 40px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        display: none;
+        &.show {
+            display: block;
+        }
+        &-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 16px 40px;
+            margin-bottom: 40px;
+        }
+        &-link {
+            color: var(--bg);
+            font-weight: bold;
+            text-transform: uppercase;
+            @include mixins.type(14, 20);
+            &:hover {
+                color: var(--main);
+            }
+        }
+        &-text {
+            color: var(--bg);
+            margin-bottom: 8px;
+            @include mixins.type(14, 20);
+        }
+        &-contact {
+            display: flex;
+            color: var(--bg);
+            margin-bottom: 8px;
+            gap: 16px;
+            & .icon {
+                flex-shrink: 0;
+            }
+            & a {
+                display: block;
+            }
+        }
+
+        &-action {
+            margin-top: 30px;
+            @include mixins.btn();
+        }
+    }
+}

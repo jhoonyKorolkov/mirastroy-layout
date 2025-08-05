@@ -1,0 +1,45 @@
+// chunks/_tags.scss
+@use "../../globals" as mixins;
+
+.tags {
+  margin-top: 40px;
+
+  @include mixins.respond-max(tablet) {
+    margin-top: 20px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    &-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: var(--link);
+      font-size: 14px;
+      line-height: 20px;
+
+      &:hover {
+        background: #f2f2f2;
+        border-color: #f2f2f2;
+        color: var(--text);
+      }
+
+      &.active {
+        background: #f2f2f2;
+        border-color: #f2f2f2;
+        color: var(--text);
+        cursor: auto;
+      }
+    }
+
+    &-more {
+      color: var(--link);
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

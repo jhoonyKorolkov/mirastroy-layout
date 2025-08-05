@@ -1,0 +1,10 @@
+// глобально переменные и миксины
+@use 'base/reset';
+@use 'base/base';
+@use 'base/fonts';
+
+@use 'chunks/header';
+@use 'chunks/footer';
+
+@use 'chunks/dashboard/first';
+@use 'chunks/dashboard/why';

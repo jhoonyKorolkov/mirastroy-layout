@@ -1,0 +1,233 @@
+@use 'sass:map';
+@use 'sass:math';
+// ===== Mixins =====
+@use 'variables' as *;
+
+$root-font-size: 16 !default; // предполагаем, что html { font-size: 16px; }
+
+@function px2rem($px) {
+    @return math.div($px, $root-font-size) * 1rem;
+}
+
+@mixin type($fs, $lh) {
+    font-size: px2rem($fs);
+    line-height: math.div($lh, $fs);
+}
+
+// Clearfix mixin
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// Centering mixin
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Button mixin
+@mixin btn() {
+    font-weight: 700;
+    padding: 16px 0;
+    background: var(--main);
+    color: var(--text);
+    transition: 0.2s;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    font-family: $font-secondary;
+    width: 100%;
+    display: block;
+    font-weight: bold;
+    height: 56px;
+    @include type(14, 20);
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+// Input mixin
+@mixin input($height: 58px) {
+    height: $height;
+    padding: 24px 20px 8px;
+    transition: 0.2s;
+    border-radius: 16px;
+    font-size: 16px;
+    background: var(--bg);
+    color: var(--text);
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    @include respond-max(tablet) {
+        border-radius: 12px;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        opacity: 0;
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:focus ~ .label,
+    .label:focus {
+        transform: translateY(-12px);
+        font-size: 12px;
+    }
+
+    &::placeholder {
+        color: var(--text_gray);
+        @include type(14, 20);
+    }
+
+    &:disabled {
+        border-color: #cccccc;
+        background: transparent;
+    }
+}
+
+// Crop text mixin
+@mixin cropText($num: 7) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+    line-clamp: $num;
+    //box-orient: vertical;
+}
+
+// Adaptive font-size mixin
+// Adaptive font-size mixin
+@mixin adaptiv_font($pcSize, $mobSize) {
+    // Мобильное правило может быть первым
+    @include respond-max(phone) {
+        font-size: #{$mobSize}px;
+    }
+
+    // Базовая декларация, иду­щая после вложенных, — оборачиваем
+    & {
+        font-size: #{$pcSize}px;
+    }
+}
+
+// Adaptive title-size mixin
+@mixin adaptiv_title($pcSize, $tablSize, $mobSize) {
+    // Планшетное правило
+    @include respond-max(tablet) {
+        font-size: #{$tablSize}px;
+    }
+
+    // Базовая декларация
+    & {
+        font-size: #{$pcSize}px;
+    }
+
+    // Мобильное правило
+    @include respond-max(phone) {
+        font-size: #{$mobSize}px;
+    }
+}
+
+// Adaptive line-height mixin
+@mixin adaptiv_lh($pcSize, $tablSize, $mobSize) {
+    // Вложенное правило может идти первым
+    @include respond-max(tablet) {
+        line-height: #{$tablSize}px;
+    }
+
+    // Базовая или последующие декларации возвращаем в корень селектора
+    & {
+        line-height: #{$pcSize}px;
+    }
+
+    @include respond-max(phone) {
+        line-height: #{$mobSize}px;
+    }
+}
+
+$breakpoints: (
+    tablet: 1240px,
+    phone: 767px, // можно добавить любые другие
+);
+
+// Миксин для медиавыражений "макс-ширина"
+@mixin respond-max($label) {
+    $size: map.get($breakpoints, $label);
+    @if $size {
+        @media screen and (max-width: $size) {
+            @content;
+        }
+    } @else {
+        @warn "Не найдена точка останова `#{$label}` в $breakpoints.";
+    }
+}
+
+@mixin inform($color: #6c6e75) {
+    font-size: 18px;
+    line-height: 26px;
+    color: $color;
+    text-align: center;
+    max-width: 752px;
+    margin: 0 auto;
+    @include respond-max(phone) {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+/// Общий стиль для блока “чекбоксов” (.checkbox + .custom + .icon)
+@mixin checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    .checkbox {
+        display: none;
+    }
+
+    .custom {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        .icon {
+            visibility: hidden;
+        }
+    }
+
+    .checkbox:checked + .custom {
+        background: var(--violet);
+        border-color: var(--violet);
+
+        .icon {
+            visibility: visible;
+        }
+    }
+}
+
+.select-reset {
+    /* Сбрасываем нативный вид */
+    -webkit-appearance: none; /* Chrome, Safari, Edge на WebKit/Blink */
+    -moz-appearance: none; /* Firefox */
+    appearance: none; /* современный стандарт */
+
+    /* Для IE/Edge (старых) скрываем стрелку */
+    &::-ms-expand {
+        display: none;
+    }
+}

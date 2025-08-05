@@ -1,0 +1,205 @@
+// chunks/_text-description.scss
+@use "../../globals" as mixins;
+
+.text-description {
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 0 20px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+    text-align: center;
+
+    @include mixins.respond-max(tablet) {
+      margin-bottom: 20px;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @include mixins.respond-max(phone) {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+  }
+
+  h6 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: item;
+
+    li {
+      font-size: 16px;
+      line-height: 24px;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      position: relative;
+
+      @include mixins.respond-max(phone) {
+        padding-left: 30px;
+      }
+
+      &::before {
+        content: counter(item) ".";
+        counter-increment: item;
+        position: absolute;
+        left: 0;
+        color: var(--link);
+        font-weight: 500;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--link);
+        font-weight: 500;
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      font-size: 16px;
+      line-height: 24px;
+      padding-left: 40px;
+      margin-bottom: 20px;
+      position: relative;
+
+      @include mixins.respond-max(phone) {
+        padding-left: 30px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        color: var(--link);
+        font-weight: bold;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--link);
+        display: block;
+        top: 6px;
+
+        @include mixins.respond-max(phone) {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  figure {
+    width: fit-content;
+    margin: 30px auto;
+
+    @include mixins.respond-max(phone) {
+      margin: 20px auto;
+    }
+
+    img {
+      width: auto;
+      max-width: 750px;
+      margin: auto;
+      border-radius: 20px;
+      position: relative;
+
+      @include mixins.respond-max(phone) {
+        width: 100%;
+        max-width: 420px;
+      }
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  img {
+    width: auto;
+    max-width: 750px;
+    border-radius: 20px;
+    position: relative;
+    margin: 30px auto;
+
+    @include mixins.respond-max(phone) {
+      width: 100%;
+      max-width: 420px;
+    }
+  }
+
+  blockquote {
+    padding: 30px;
+    box-sizing: border-box;
+    background: #e7fffb;
+    margin: 30px 0;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 20px;
+    position: relative;
+
+    @include mixins.respond-max(phone) {
+      padding: 20px 16px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    @include mixins.respond-max(tablet) {
+      width: 750px;
+    }
+    @include mixins.respond-max(phone) {
+      width: 700px;
+    }
+
+    tr {
+      border-bottom: 1px solid #e4e4e4;
+    }
+    th {
+      color: #ababab;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: normal;
+      text-align: left;
+      padding: 16px 20px;
+      box-sizing: border-box;
+      width: 15%;
+    }
+    td {
+      padding: 20px;
+      box-sizing: border-box;
+      font-size: 16px;
+      line-height: 22px;
+      width: 15%;
+      vertical-align: top;
+    }
+  }
+}

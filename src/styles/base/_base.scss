@@ -1,0 +1,215 @@
+// Базовые стили
+@use '../globals' as mixins;
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: mixins.$font-primary;
+    outline: none;
+    font-size: mixins.$base-font-size;
+    line-height: mixins.$base-line-height;
+    font-weight: 400;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--bg);
+    position: relative;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+// Заголовки и адаптивность
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: mixins.$font-secondary;
+    color: var(--title);
+}
+
+h1 {
+    @include mixins.adaptiv_title(48, 32, 26);
+    @include mixins.adaptiv_lh(58, 38, 30);
+}
+
+h2 {
+    @include mixins.adaptiv_title(38, 28, 22);
+    @include mixins.adaptiv_lh(42, 36, 26);
+}
+
+h3 {
+    @include mixins.adaptiv_title(32, 26, 22);
+    @include mixins.adaptiv_lh(38, 30, 26);
+}
+
+h4 {
+    @include mixins.adaptiv_title(28, 24, 22);
+    @include mixins.adaptiv_lh(36, 30, 26);
+}
+
+h5 {
+    @include mixins.adaptiv_title(24, 24, 18);
+    @include mixins.adaptiv_lh(30, 30, 24);
+}
+
+h6 {
+    @include mixins.adaptiv_title(20, 20, 18);
+    @include mixins.adaptiv_lh(26, 26, 24);
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.wrap {
+    max-width: 1128px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: content-box;
+}
+
+.video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    iframe,
+    object,
+    embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.field-search {
+    position: relative;
+
+    &.error {
+        input,
+        textarea {
+            border-color: var(--alarm);
+        }
+
+        .field__error {
+            display: block;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        right: 20px;
+        top: 17px;
+        pointer-events: none;
+    }
+
+    .field-search__reset {
+        position: absolute;
+        right: 20px;
+        top: 17px;
+        cursor: pointer;
+    }
+}
+
+.field {
+    position: relative;
+    width: 100%;
+
+    input {
+        @include mixins.input();
+    }
+
+    &.error {
+        input,
+        textarea {
+            border: 1px solid var(--alarm);
+            //border-color: var(--alarm);
+        }
+
+        .field__error {
+            display: block;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        right: 20px;
+        top: 17px;
+        pointer-events: none;
+    }
+
+    .label {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        color: var(--text_gray);
+        transition: 0.2s;
+        pointer-events: none;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &.active .label {
+        transform: translateY(-12px);
+        font-size: 12px;
+    }
+
+    &__error {
+        color: var(--alarm);
+        font-size: 12px;
+        line-height: 18px;
+        background: var(--alarm_bg);
+        padding: 6px 20px;
+        margin-top: 6px;
+        border-radius: 8px;
+        display: none;
+    }
+}
+
+.preloader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    justify-content: center;
+    top: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9);
+    display: none;
+
+    &.show {
+        display: flex;
+    }
+}
+
+.spinner {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(152, 94, 226, 0.4);
+    border-top: 6px solid #985ee2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
