@@ -82,21 +82,21 @@
 
     &__images {
         position: relative;
+
         &-bg {
             position: absolute;
             right: 0;
             width: 100%;
             min-width: 552px;
         }
+
         &-one,
         &-two,
         &-three {
             position: absolute;
             border-radius: 16px;
             box-shadow: 0px 0px 16px 0px #3838383d;
-            transition:
-                transform 0.6s ease,
-                z-index 0.6s ease;
+            animation: zIndexLoop 9s infinite;
         }
 
         /* Позиции */
@@ -105,7 +105,7 @@
             top: 20px;
             width: 552px;
             height: 380px;
-            animation: stackMove 6s infinite;
+            animation-delay: 0s;
         }
 
         &-two {
@@ -113,8 +113,7 @@
             top: -20px;
             width: 380px;
             height: 476px;
-            animation: stackMove 6s infinite;
-            animation-delay: 2s;
+            animation-delay: 3s;
         }
 
         &-three {
@@ -122,30 +121,21 @@
             bottom: 120px;
             width: 496px;
             height: 348px;
-            animation: stackMove 6s infinite;
-            animation-delay: 4s;
+            animation-delay: 6s;
         }
 
-        /* Ключи анимации */
-        @keyframes stackMove {
+        /* Анимация по z-index */
+        @keyframes zIndexLoop {
             0% {
-                transform: translateY(0) scale(1);
                 z-index: 3;
             }
-            10% {
-                transform: translateY(-10px) scale(1.02);
+            33.33% {
                 z-index: 3;
             }
-            33% {
-                transform: translateY(0) scale(1);
-                z-index: 2;
-            }
-            34% {
-                transform: translateY(0) scale(1);
-                z-index: 1; /* уходит вниз */
+            33.34% {
+                z-index: 1;
             }
             100% {
-                transform: translateY(0) scale(1);
                 z-index: 1;
             }
         }

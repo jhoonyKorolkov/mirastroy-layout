@@ -36,11 +36,13 @@ export function styles(changedFile) {
     return gulp
         .src(changedFile, { base: './src/styles' })
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(dependents()) // найдёт все entry, которые используют этот файл
+        .pipe(dependents()) // находим все entry, которые используют этот файл
         .pipe(sass({ outputStyle: 'expanded' }, sass.logError))
-        .pipe(rename({ dirname: '' })) // сбросит вложенные папки из src/styles
+        .pipe(rename({ dirname: '' }))
         .pipe(gulp.dest('./dist/css'))
-        .pipe(bs.stream({ match: '**/*.css' }))
+        .on('end', () => {
+            bs.reload('*.css') // один вызов
+        })
 }
 
 export function videos() {
@@ -125,7 +127,6 @@ export function serve() {
         server: { baseDir: './dist' },
         port: 3000,
         notify: false,
-        open: false,
     })
 
     const watchOpts = {
@@ -133,12 +134,18 @@ export function serve() {
         awaitWriteFinish: { stabilityThreshold: 200 },
     }
 
-    // SCSS
-    gulp.watch('./src/styles/**/*.scss', watchOpts).on('change', (filepath) =>
-        styles(filepath),
-    )
+    // SCSS — одно наблюдение с условием
+    gulp.watch('./src/styles/**/*.scss', watchOpts).on('change', (filepath) => {
+        if (filepath.includes('_mixins') || filepath.includes('_variables')) {
+            // Пересобираем все точки входа
+            styles('./src/styles/*.scss')
+        } else {
+            // Пересобираем только затронутые entry
+            styles(filepath)
+        }
+    })
 
-    // HTML в src
+    // HTML
     gulp.watch(
         './src/**/*.html',
         watchOpts,
@@ -148,7 +155,6 @@ export function serve() {
         }),
     )
 
-    // **НО** также шаблоны вне src
     gulp.watch(
         './templates/**/*.html',
         watchOpts,
@@ -158,16 +164,13 @@ export function serve() {
         }),
     )
 
-    // JS, шрифты, картинки и иконки без изменений
+    // Остальные ассеты
     gulp.watch('./src/js/**/*.js', watchOpts, scripts)
     gulp.watch('./src/fonts/**/*', watchOpts, fonts)
     gulp.watch('./src/images/**/*', watchOpts, images)
     gulp.watch('./src/icons/**/*.svg', watchOpts, sprite)
     gulp.watch('./src/videos/**/*.{mp4,webm,ogg}', watchOpts, videos)
-}
-
-// ————————————————————————————————————————————————————————
-//  Сборка
+} // ———————————————————————————————————————————————————————— //  Сборка
 // ————————————————————————————————————————————————————————
 export const build = gulp.series(
     clean,

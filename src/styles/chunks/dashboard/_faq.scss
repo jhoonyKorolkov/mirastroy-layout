@@ -1,0 +1,74 @@
+@use '../../globals' as mixins;
+
+.faq {
+    padding: 80px 0;
+    width: 100%;
+    position: relative;
+    background: #f0f0f0;
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-gap: 84px;
+        position: relative;
+    }
+
+    &__info {
+        &-title {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        counter-reset: my-counter;
+    }
+
+    &__item {
+        padding: 24px 32px;
+        border: 1px solid #38383833;
+        border-radius: 16px;
+        background: #f0f0f0;
+        position: relative;
+        &.active {
+            border-color: var(--bg);
+            background: var(--bg);
+            & .faq__item-main {
+                display: block;
+                margin-top: 16px;
+            }
+
+            & .icon {
+                transform: rotate(180deg);
+            }
+        }
+
+        &-hdr {
+            font-family: mixins.$font-secondary;
+            display: flex;
+
+            gap: 20px;
+            justify-content: space-between;
+            cursor: pointer;
+            @include mixins.type(20, 30);
+        }
+
+        &-main {
+            color: #9a9a9a;
+            display: none;
+        }
+    }
+
+    &__action {
+        @include mixins.btn();
+    }
+}

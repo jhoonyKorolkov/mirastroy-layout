@@ -45,25 +45,25 @@ $root-font-size: 16 !default; // предполагаем, что html { font-si
     display: block;
     font-weight: bold;
     height: 56px;
+    border: 3px solid transparent;
     @include type(14, 20);
 
     &:hover {
-        opacity: 0.9;
+        border-color: var(--text);
     }
 }
 
 // Input mixin
-@mixin input($height: 58px) {
+@mixin input($height: 72px) {
     height: $height;
-    padding: 24px 20px 8px;
+    padding: 24px 24px 8px;
     transition: 0.2s;
-    border-radius: 16px;
+    border-radius: 8px;
     font-size: 16px;
-    background: var(--bg);
-    color: var(--text);
-    border: 0;
+    background: #484848;
+    color: var(--bg);
+    border: 1px solid #ffffffcc;
     width: 100%;
-    box-sizing: border-box;
     @include respond-max(tablet) {
         border-radius: 12px;
     }

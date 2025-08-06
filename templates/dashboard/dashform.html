@@ -1,0 +1,53 @@
+<div class="dashform">
+  <div class="wrap">
+    <div class="dashform__wrapper">
+      <div class="dashform__info">
+        <h2 class="dashform__title">
+          Узнайте точную стоимость вашего ремонта
+        </h2>
+        <div class="dashform__text">
+          Мы подготовим точный расчёт: все этапы, все материалы,
+          реальные сроки и окончательную цену, которая больше не
+          изменится после заключения договора.
+          Один расчёт — один результат. Все честно!
+        </div>
+        <form class="dashform__form">
+          <div class="field">
+            <input type="text" class="dashform__form-field">
+            <label class="label">Ваше имя</label>
+            <!-- <div class="field__error">asa</div> -->
+          </div>
+          <div class="field">
+            <input type="text" class="dashform__form-field">
+            <label class="label">Ваш номер телефона</label>
+            <!-- <div class="field__error">asa</div> -->
+          </div>
+          <div class="dashform__form-agree">
+            Нажимая на кнопку вы соглашаетесь с политикой конфиденциальности в отношении пользовательских данных
+          </div>
+          <button type="submit" class="dashform__form-action">Рассчитать мой ремонт</button>
+        </form>
+      </div>
+      <div class="dashform__box">
+        <picture>
+          <source srcset="/images/dashform-mob@2x.webp 2x, /images/dashform-mob.webp 1x" media="(max-width: 1240px)"
+            type="image/webp">
+          <source srcset="/images/dashform-mob@2x.png 2x, /images/dashform-mob.png 1x" media="(max-width: 1240px)"
+            type="image/png">
+          <source srcset="/images/dashform@2x.webp 2x, /images/dashform.webp 1x" type="image/webp">
+          <source srcset="/images/dashform@2x.png 2x, /images/dashform.png 1x" type="image/png">
+          <img src="/images/dashform.png" alt="" loading="lazy" class="dashform__box-image">
+        </picture>
+        <div class="dashform__box-text">
+          Не хочется заполнять формы? Напишите нам — ответим в течение 15 минут.
+        </div>
+        <a href="" class="dashform__box-link">
+          <svg class="icon" width="30" height="30">
+            <use href="/images/sprite.svg#whatsapp" fill="currentColor"></use>
+          </svg>
+          +7 (909) 775 12 28
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+@use '../../globals' as mixins;
+
+.how {
+    padding: 80px 0;
+    width: 100%;
+    position: relative;
+    background: #f0f0f0;
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 264px 1fr;
+        grid-gap: 120px;
+        position: relative;
+    }
+
+    &__info {
+        &-title {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        counter-reset: my-counter;
+    }
+
+    &__item {
+        padding: 24px 32px;
+        border: 1px solid #38383833;
+        border-radius: 16px;
+        counter-increment: my-counter;
+        display: flex;
+        background: #f0f0f0;
+        position: relative;
+        &.active {
+            border-color: var(--bg);
+            background: var(--bg);
+            padding-left: 160px;
+
+            &::before {
+                content: none;
+            }
+
+            & .how__item-main {
+                display: block;
+                margin-top: 16px;
+            }
+
+            & .icon {
+                transform: rotate(180deg);
+            }
+
+            & .how__item-img {
+                display: block;
+            }
+        }
+
+        &::before {
+            content: counter(my-counter);
+            width: 128px;
+            text-align: right;
+            font-weight: bold;
+            font-family: mixins.$font-secondary;
+            display: flex;
+            justify-content: flex-end;
+            flex-shrink: 0;
+            @include mixins.type(20, 30);
+        }
+        &-img {
+            display: none;
+            position: absolute;
+            left: -80px;
+        }
+
+        &-hdr {
+            font-family: mixins.$font-secondary;
+            display: flex;
+            margin-left: 32px;
+            gap: 20px;
+            justify-content: space-between;
+            cursor: pointer;
+            @include mixins.type(20, 30);
+        }
+
+        &-main {
+            margin-left: 32px;
+            color: #9a9a9a;
+            @include mixins.cropText(1);
+        }
+    }
+}
