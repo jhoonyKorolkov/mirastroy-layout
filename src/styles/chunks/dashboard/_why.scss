@@ -78,8 +78,13 @@
             padding-left: 68px;
             padding-right: 68px;
             height: 72px;
-            width: auto;
+            width: fit-content;
             margin-top: 32px;
+            @include mixins.respond-max(tablet) {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     }
 

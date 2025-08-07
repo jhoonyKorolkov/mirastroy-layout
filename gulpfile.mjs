@@ -45,6 +45,16 @@ export function styles(changedFile) {
         })
 }
 
+export function cssLibs() {
+    return gulp
+        .src('./src/styles/libs/*.css')
+        .pipe(debug({ title: 'Переноси стили библиотеки:' }))
+        .pipe(gulp.dest('./dist/css'))
+        .on('end', () => {
+            bs.reload('*.css') // один вызов
+        })
+}
+
 export function videos() {
     return gulp
         .src('./src/videos/**/*.{mp4,webm,ogg}')
@@ -72,6 +82,13 @@ export async function scripts() {
         .pipe(webpackStream(webpackConfig))
         .pipe(gulp.dest('./dist/js'))
         .pipe(bs.stream())
+}
+
+export function jsLibs() {
+    return gulp
+        .src('./src/js/libs/*.js')
+        .pipe(debug({ title: 'Переноси скрипты библиотеки:' }))
+        .pipe(gulp.dest('./dist/js'))
 }
 
 export function fonts() {
@@ -174,8 +191,16 @@ export function serve() {
 // ————————————————————————————————————————————————————————
 export const build = gulp.series(
     clean,
-    gulp.parallel(html, scripts, fonts, images, videos, sprite, (cb) =>
-        styles('./src/styles/**/*.scss'),
+    gulp.parallel(
+        html,
+        scripts,
+        jsLibs,
+        cssLibs,
+        fonts,
+        images,
+        videos,
+        sprite,
+        (cb) => styles('./src/styles/**/*.scss'),
     ),
 )
 

@@ -64,6 +64,7 @@ document
 const outerSwiper = new Swiper('.outer-swiper', {
     slidesPerView: 'auto',
     spaceBetween: 16, // значение по умолчанию
+    freeMode: true,
     navigation: {
         nextEl: '.works__controls-next',
         prevEl: '.works__controls-prev',
@@ -72,6 +73,7 @@ const outerSwiper = new Swiper('.outer-swiper', {
         768: {
             // при ширине экрана >= 768px
             spaceBetween: 24,
+            freeMode: false,
         },
     },
     on: {
@@ -80,6 +82,13 @@ const outerSwiper = new Swiper('.outer-swiper', {
         },
     },
 })
+
+// Функция переключения на слайдерный режим
+function switchToSliderMode() {
+    outerSwiper.freeMode.disable() // отключаем свободный режим
+    outerSwiper.params.freeMode = false // обновляем параметры
+    outerSwiper.update() // обновляем слайдер
+}
 
 document.querySelectorAll('.inner-swiper').forEach((innerEl) => {
     const swiperInstance = new Swiper(innerEl, {
@@ -102,6 +111,7 @@ document.querySelectorAll('.inner-swiper').forEach((innerEl) => {
 const comandSwiper = new Swiper('.comand__slider', {
     slidesPerView: 'auto',
     spaceBetween: 16,
+    freeMode: true,
     // loop: true,
     navigation: {
         nextEl: '.comand__controls-next',
@@ -111,6 +121,7 @@ const comandSwiper = new Swiper('.comand__slider', {
         768: {
             loop: true,
             slidesPerView: '3',
+            freeMode: false,
             // при ширине экрана >= 768px
             spaceBetween: 24,
         },
@@ -121,6 +132,7 @@ const comandSwiper = new Swiper('.comand__slider', {
 const reviewsSwiper = new Swiper('.reviews__slider', {
     slidesPerView: 'auto',
     spaceBetween: 16,
+    freeMode: true,
     navigation: {
         nextEl: '.reviews__controls-next',
         prevEl: '.reviews__controls-prev',
@@ -137,6 +149,7 @@ const reviewsSwiper = new Swiper('.reviews__slider', {
         768: {
             loop: true,
             slidesPerView: '3',
+            freeMode: false,
             // при ширине экрана >= 768px
             spaceBetween: 24,
         },

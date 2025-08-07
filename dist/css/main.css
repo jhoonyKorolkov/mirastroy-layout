@@ -1254,8 +1254,15 @@ h2 {
   padding-left: 68px;
   padding-right: 68px;
   height: 72px;
-  width: auto;
+  width: fit-content;
   margin-top: 32px;
+}
+@media screen and (max-width: 1240px) {
+  .why__action {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 @media screen and (max-width: 1240px) {
   .why__blog {
@@ -1352,8 +1359,8 @@ h2 {
   }
 }
 .works__slider {
-  display: flex;
-  padding-left: 20%;
+  padding-right: 40px;
+  padding-left: calc((100vw - 1140px) / 2);
 }
 @media screen and (max-width: 1240px) {
   .works__slider {
@@ -1635,6 +1642,16 @@ h2 {
 }
 .how__info-title {
   margin-bottom: 16px;
+}
+.how__wrapper {
+  display: grid;
+  grid-template-columns: 264px 1fr;
+  grid-gap: 120px;
+}
+@media screen and (max-width: 1240px) {
+  .how__wrapper {
+    display: block;
+  }
 }
 .how__list {
   display: flex;

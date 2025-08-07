@@ -30,10 +30,8 @@
     }
 
     &__slider {
-        display: flex;
-        // width: 100vw;
-        padding-left: 20%;
-        // padding-right: 24px;
+        padding-right: 40px;
+        padding-left: calc((100vw - 1140px) / 2);
         @include mixins.respond-max(tablet) {
             padding-left: 20px;
         }

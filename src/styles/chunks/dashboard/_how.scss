@@ -26,6 +26,15 @@
         }
     }
 
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 264px 1fr;
+        grid-gap: 120px;
+        @include mixins.respond-max(tablet) {
+            display: block;
+        }
+    }
+
     &__list {
         display: flex;
         flex-direction: column;
