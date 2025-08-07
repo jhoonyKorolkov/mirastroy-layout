@@ -65,10 +65,16 @@ document
 // ===== Инициализация Swiper =====
 const outerSwiper = new Swiper('.outer-swiper', {
     slidesPerView: 'auto',
-    spaceBetween: 24,
+    spaceBetween: 16, // значение по умолчанию
     navigation: {
         nextEl: '.works__controls-next',
         prevEl: '.works__controls-prev',
+    },
+    breakpoints: {
+        768: {
+            // при ширине экрана >= 768px
+            spaceBetween: 24,
+        },
     },
     on: {
         slideChangeTransitionStart(swiper) {
@@ -96,20 +102,27 @@ document.querySelectorAll('.inner-swiper').forEach((innerEl) => {
 })
 
 const comandSwiper = new Swiper('.comand__slider', {
-    slidesPerView: 3,
-    spaceBetween: 24,
+    slidesPerView: 'auto',
+    spaceBetween: 16,
     // loop: true,
     navigation: {
         nextEl: '.comand__controls-next',
         prevEl: '.comand__controls-prev',
     },
+    breakpoints: {
+        768: {
+            loop: true,
+            slidesPerView: '3',
+            // при ширине экрана >= 768px
+            spaceBetween: 24,
+        },
+    },
 })
 
 // Инициализация слайдера отзывов
 const reviewsSwiper = new Swiper('.reviews__slider', {
-    slidesPerView: 3,
-    spaceBetween: 24,
-    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 16,
     navigation: {
         nextEl: '.reviews__controls-next',
         prevEl: '.reviews__controls-prev',
@@ -120,6 +133,14 @@ const reviewsSwiper = new Swiper('.reviews__slider', {
             swiper.el.querySelectorAll('video').forEach((video) => {
                 video.pause()
             })
+        },
+    },
+    breakpoints: {
+        768: {
+            loop: true,
+            slidesPerView: '3',
+            // при ширине экрана >= 768px
+            spaceBetween: 24,
         },
     },
 })
@@ -168,10 +189,10 @@ document.querySelectorAll('.how__item-hdr').forEach((btn) => {
             return
         }
 
-        // Убираем active у всех
-        document.querySelectorAll('.how__item').forEach((item) => {
-            item.classList.remove('active')
-        })
+        // // Убираем active у всех
+        // document.querySelectorAll('.how__item').forEach((item) => {
+        //     item.classList.remove('active')
+        // })
 
         // Добавляем active только текущему
         currentItem.classList.add('active')
@@ -188,13 +209,57 @@ document.querySelectorAll('.faq__item-hdr').forEach((btn) => {
             return
         }
 
-        // Убираем active у всех
-        document.querySelectorAll('.faq__item').forEach((item) => {
-            item.classList.remove('active')
-        })
+        // // Убираем active у всех
+        // document.querySelectorAll('.faq__item').forEach((item) => {
+        //     item.classList.remove('active')
+        // })
 
         // Добавляем active только текущему
         currentItem.classList.add('active')
+    })
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+    const burger = document.querySelector('.header__burger')
+    const dropdown = document.querySelector('.header__dropdown')
+    const body = document.querySelector('body')
+
+    function isMobile() {
+        return window.innerWidth <= 768 // можно изменить порог под нужный breakpoint
+    }
+
+    // Открытие/закрытие по кнопке
+    burger.addEventListener('click', function (e) {
+        e.stopPropagation() // Не даём всплыть до body
+
+        const isOpen = burger.classList.toggle('open')
+        dropdown.classList.toggle('active')
+
+        if (isMobile()) {
+            body.classList.toggle('locked', isOpen)
+        }
+    })
+
+    // Закрытие при клике вне меню и кнопки
+    document.addEventListener('click', function (e) {
+        const isClickInsideDropdown = dropdown.contains(e.target)
+        const isClickOnBurger = burger.contains(e.target)
+
+        if (!isClickInsideDropdown && !isClickOnBurger) {
+            burger.classList.remove('open')
+            dropdown.classList.remove('active')
+
+            if (isMobile()) {
+                body.classList.remove('locked')
+            }
+        }
+    })
+
+    // Дополнительно: убираем locked при ресайзе на десктоп
+    window.addEventListener('resize', function () {
+        if (!isMobile()) {
+            body.classList.remove('locked')
+        }
     })
 })
 

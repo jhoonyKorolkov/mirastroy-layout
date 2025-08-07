@@ -3,25 +3,40 @@
 .reviews {
     padding: 80px 0 100px 0;
     position: relative;
+    @include mixins.respond-max(tablet) {
+        padding: 40px 0 150px 0;
+        & .wrap {
+            padding: 0;
+        }
+    }
     &__bg {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         width: 100%;
-        z-index: -1;
+        @include mixins.respond-max(tablet) {
+            height: 280px;
+            object-fit: cover;
+        }
     }
     &__hdr {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 40px;
+        position: relative;
+        @include mixins.respond-max(tablet) {
+            margin-bottom: 32px;
+            padding: 0 20px;
+        }
     }
 
     &__slider {
         display: flex;
-        // width: 100vw;
-        // padding-right: 24px;
+        @include mixins.respond-max(tablet) {
+            padding: 0 20px;
+        }
     }
 
     &__slide {
@@ -31,6 +46,10 @@
         border-radius: 16px;
         overflow: hidden;
         height: 500px;
+        @include mixins.respond-max(tablet) {
+            width: 306px;
+            height: 424px;
+        }
 
         &-video {
             width: 100%;
@@ -41,6 +60,10 @@
             border-radius: 16px;
             object-fit: cover; // обрезает края, сохраняя пропорции
             background: #000;
+            @include mixins.respond-max(tablet) {
+                max-width: 306px;
+                height: 458px;
+            }
         }
 
         &-play {
@@ -71,8 +94,8 @@
         flex-shrink: 0;
         width: 360px;
         overflow: hidden;
-        &:last-child {
-            margin-right: 60px;
+        @include mixins.respond-max(tablet) {
+            width: 306px;
         }
         &-image {
             border-top-left-radius: 16px;
@@ -80,6 +103,10 @@
             width: 360px;
             height: 240px;
             object-fit: cover;
+            @include mixins.respond-max(tablet) {
+                width: 306px;
+                height: 194px;
+            }
         }
         &-main {
             padding: 16px 24px 24px;
@@ -90,25 +117,8 @@
             display: flex;
             flex-direction: column;
             position: relative;
-
-            & .inner-pagination {
-                display: flex;
-                justify-content: center;
-                margin-top: 8px;
-                top: 0;
-
-                .swiper-pagination-bullet {
-                    width: 4px;
-                    height: 4px;
-                    background: #ccc;
-                    border-radius: 50%;
-                    opacity: 1; // убрать прозрачность по умолчанию
-                    transition: background 0.3s ease;
-                }
-
-                .swiper-pagination-bullet-active {
-                    background: #000; // активная точка
-                }
+            @include mixins.respond-max(tablet) {
+                padding: 16px 20px 20px;
             }
         }
         &-title {
@@ -116,10 +126,16 @@
             font-family: mixins.$font-secondary;
             margin-bottom: 8px;
             @include mixins.type(20, 30);
+            @include mixins.respond-max(tablet) {
+                @include mixins.type(19, 28);
+            }
         }
         &-text {
             overflow: auto;
             max-height: 182px;
+            @include mixins.respond-max(tablet) {
+                max-height: 155px;
+            }
         }
         &-more {
             margin-top: auto;
@@ -134,6 +150,9 @@
         display: flex;
         align-items: center;
         gap: 24px;
+        @include mixins.respond-max(tablet) {
+            display: none;
+        }
         &-prev {
             transform: rotate(180deg);
             display: flex;
@@ -158,14 +177,26 @@
         margin-left: auto;
         margin-top: 100px;
         text-align: right;
+        @include mixins.respond-max(tablet) {
+            margin: 40px 20px 0;
+            text-align: left;
+            flex-direction: column;
+            padding: 30px 30px 142px;
+        }
         &-title {
             font-family: mixins.$font-secondary;
             margin-bottom: 16px;
             @include mixins.type(32, 36);
+            @include mixins.respond-max(tablet) {
+                @include mixins.type(26, 30);
+            }
         }
         &-text {
             margin-bottom: 24px;
             max-width: 492px;
+            @include mixins.respond-max(tablet) {
+                max-width: none;
+            }
         }
         &-action {
             @include mixins.btn();
@@ -175,11 +206,19 @@
                 width: fit-content;
                 margin-left: auto;
                 @include mixins.type(14, 18);
+                @include mixins.respond-max(tablet) {
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: 100%;
+                }
             }
         }
         &-info {
             margin-left: auto;
             padding-left: 590px;
+            @include mixins.respond-max(tablet) {
+                padding: 0;
+            }
         }
         &-img {
             position: absolute;
@@ -187,6 +226,15 @@
             top: -20px;
             width: 446px;
             height: 360px;
+            @include mixins.respond-max(tablet) {
+                width: 275px;
+                height: 210px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: auto;
+                bottom: -110px;
+            }
         }
     }
 }

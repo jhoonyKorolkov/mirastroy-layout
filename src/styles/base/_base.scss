@@ -35,33 +35,13 @@ h6 {
 }
 
 h1 {
-    @include mixins.adaptiv_title(48, 32, 26);
-    @include mixins.adaptiv_lh(58, 38, 30);
+    @include mixins.adaptiv_title(48, 34, 34);
+    @include mixins.adaptiv_lh(58, 44, 44);
 }
 
 h2 {
-    @include mixins.adaptiv_title(38, 28, 22);
-    @include mixins.adaptiv_lh(42, 36, 26);
-}
-
-h3 {
-    @include mixins.adaptiv_title(32, 26, 22);
-    @include mixins.adaptiv_lh(38, 30, 26);
-}
-
-h4 {
-    @include mixins.adaptiv_title(28, 24, 22);
-    @include mixins.adaptiv_lh(36, 30, 26);
-}
-
-h5 {
-    @include mixins.adaptiv_title(24, 24, 18);
-    @include mixins.adaptiv_lh(30, 30, 24);
-}
-
-h6 {
-    @include mixins.adaptiv_title(20, 20, 18);
-    @include mixins.adaptiv_lh(26, 26, 24);
+    @include mixins.adaptiv_title(38, 32, 32);
+    @include mixins.adaptiv_lh(42, 36, 36);
 }
 
 .main {
@@ -73,6 +53,9 @@ h6 {
     margin: 0 auto;
     padding: 0 40px;
     box-sizing: content-box;
+    @include mixins.respond-max(tablet) {
+        padding: 0 20px;
+    }
 }
 
 .field {
@@ -164,4 +147,8 @@ h6 {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.locked {
+    overflow: hidden;
 }

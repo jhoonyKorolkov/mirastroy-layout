@@ -5,22 +5,22 @@
     width: 100%;
     position: relative;
     background: #f0f0f0;
+    @include mixins.respond-max(tablet) {
+        padding: 40px 0;
+    }
     &__bg {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         width: 100%;
+        @include mixins.respond-max(tablet) {
+            height: 280px;
+            object-fit: cover;
+        }
     }
-
-    &__wrapper {
-        display: grid;
-        grid-template-columns: 264px 1fr;
-        grid-gap: 120px;
-        position: relative;
-    }
-
     &__info {
+        position: relative;
         &-title {
             margin-bottom: 16px;
         }
@@ -31,6 +31,9 @@
         flex-direction: column;
         gap: 24px;
         counter-reset: my-counter;
+        @include mixins.respond-max(tablet) {
+            margin-top: 32px;
+        }
     }
 
     &__item {
@@ -41,10 +44,17 @@
         display: flex;
         background: #f0f0f0;
         position: relative;
+        @include mixins.respond-max(tablet) {
+            flex-direction: column-reverse;
+            padding: 20px;
+        }
         &.active {
             border-color: var(--bg);
             background: var(--bg);
             padding-left: 160px;
+            @include mixins.respond-max(tablet) {
+                padding-left: 20px;
+            }
 
             &::before {
                 content: none;
@@ -74,11 +84,20 @@
             justify-content: flex-end;
             flex-shrink: 0;
             @include mixins.type(20, 30);
+            @include mixins.respond-max(tablet) {
+                content: none;
+            }
         }
         &-img {
             display: none;
             position: absolute;
             left: -80px;
+            @include mixins.respond-max(tablet) {
+                position: static;
+                margin-top: 16px;
+                width: 100%;
+                max-width: 360px;
+            }
         }
 
         &-hdr {
@@ -89,12 +108,28 @@
             justify-content: space-between;
             cursor: pointer;
             @include mixins.type(20, 30);
+            @include mixins.respond-max(tablet) {
+                margin: 0;
+            }
         }
 
         &-main {
             margin-left: 32px;
+            margin-top: 8px;
             color: #9a9a9a;
             @include mixins.cropText(1);
+            @include mixins.respond-max(tablet) {
+                margin-left: 0;
+                color: #4f4f4f;
+                @include mixins.cropText(2);
+            }
+
+            & p {
+                margin-bottom: 10px;
+                &:last-child {
+                    margin: 0;
+                }
+            }
         }
     }
 }

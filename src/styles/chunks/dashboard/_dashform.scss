@@ -5,6 +5,9 @@
 
     &__info {
         padding: 80px 0;
+        @include mixins.respond-max(tablet) {
+            padding: 40px 0 0;
+        }
     }
 
     &__title {
@@ -20,6 +23,9 @@
         display: grid;
         grid-template-columns: 1fr 414px;
         grid-gap: 30px;
+        @include mixins.respond-max(tablet) {
+            display: block;
+        }
     }
 
     &__form {
@@ -27,6 +33,11 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 24px;
+        @include mixins.respond-max(tablet) {
+            margin-top: 24px;
+            grid-template-columns: 1fr;
+            grid-gap: 16px;
+        }
 
         &-agree {
             padding-left: 20px;
@@ -49,11 +60,18 @@
         display: flex;
         flex-direction: column;
         gap: 18px;
+        @include mixins.respond-max(tablet) {
+            margin-top: 40px;
+            gap: 16px;
+        }
 
         &-text {
             color: var(--bg);
             text-align: center;
             @include mixins.type(14, 20);
+            @include mixins.respond-max(tablet) {
+                order: -2;
+            }
         }
 
         &-link {
@@ -64,6 +82,9 @@
             color: var(--bg);
             font-family: mixins.$font-secondary;
             @include mixins.type(20, 30);
+            @include mixins.respond-max(tablet) {
+                order: -1;
+            }
             & .icon {
                 flex-shrink: 0;
             }

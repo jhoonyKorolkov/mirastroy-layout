@@ -5,70 +5,75 @@
     width: 100%;
     position: relative;
     background: #f0f0f0;
+    @include mixins.respond-max(tablet) {
+        padding: 40px 0;
+    }
     &__bg {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         width: 100%;
+        @include mixins.respond-max(tablet) {
+            height: 280px;
+            object-fit: cover;
+        }
     }
 
     &__wrapper {
         display: grid;
-        grid-template-columns: 300px 1fr;
-        grid-gap: 84px;
+        grid-template-columns: 1fr 552px;
+        grid-gap: 80px;
         position: relative;
+        @include mixins.respond-max(tablet) {
+            display: block;
+        }
     }
 
     &__info {
         &-title {
-            margin-bottom: 16px;
+            margin-bottom: 40px;
+            @include mixins.respond-max(tablet) {
+                margin-bottom: 32px;
+            }
         }
     }
 
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 24px;
-        counter-reset: my-counter;
+        gap: 8px;
+        margin-top: 24px;
+        @include mixins.respond-max(tablet) {
+            margin-top: 18px;
+        }
     }
 
     &__item {
-        padding: 24px 32px;
-        border: 1px solid #38383833;
-        border-radius: 16px;
-        background: #f0f0f0;
-        position: relative;
-        &.active {
-            border-color: var(--bg);
-            background: var(--bg);
-            & .faq__item-main {
-                display: block;
-                margin-top: 16px;
-            }
-
-            & .icon {
-                transform: rotate(180deg);
-            }
+        display: flex;
+        // align-items: center;
+        gap: 16px;
+        color: #4f4f4f;
+        & a {
+            text-decoration: underline dotted;
         }
-
-        &-hdr {
-            font-family: mixins.$font-secondary;
-            display: flex;
-
-            gap: 20px;
-            justify-content: space-between;
-            cursor: pointer;
-            @include mixins.type(20, 30);
+        & span {
+            color: #4f4f4f;
         }
-
-        &-main {
-            color: #9a9a9a;
-            display: none;
+        & .icon {
+            flex-shrink: 0;
+        }
+        &:last-child {
+            margin-top: 16px;
         }
     }
 
-    &__action {
-        @include mixins.btn();
+    &__map {
+        @include mixins.respond-max(tablet) {
+            margin-top: 16px;
+            & iframe {
+                width: 100%;
+            }
+        }
     }
 }

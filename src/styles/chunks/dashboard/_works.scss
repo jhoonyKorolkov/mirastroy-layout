@@ -3,19 +3,30 @@
 .works {
     padding: 80px 0 100px 0;
     position: relative;
+    @include mixins.respond-max(tablet) {
+        padding: 40px 0 70px 0;
+    }
     &__bg {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         width: 100%;
-        z-index: -1;
+        @include mixins.respond-max(tablet) {
+            height: 280px;
+            object-fit: cover;
+        }
     }
+
     &__hdr {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 40px;
+        position: relative;
+        @include mixins.respond-max(tablet) {
+            margin-bottom: 32px;
+        }
     }
 
     &__slider {
@@ -23,22 +34,30 @@
         // width: 100vw;
         padding-left: 20%;
         // padding-right: 24px;
+        @include mixins.respond-max(tablet) {
+            padding-left: 20px;
+        }
     }
 
     &__slide {
         position: relative;
         flex-shrink: 0;
         width: 360px;
+        @include mixins.respond-max(tablet) {
+            width: 306px;
+        }
 
         &-video {
             width: 100%;
             max-width: 360px;
             height: 466px;
-
-            // aspect-ratio: 3 / 4; // вертикальное соотношение (Snapchat/TikTok/Stories)
             border-radius: 16px;
             object-fit: cover; // обрезает края, сохраняя пропорции
             background: #000;
+            @include mixins.respond-max(tablet) {
+                max-width: 306px;
+                height: 458px;
+            }
         }
 
         &-play {
@@ -54,8 +73,8 @@
         flex-shrink: 0;
         width: 360px;
         overflow: hidden;
-        &:last-child {
-            margin-right: 60px;
+        @include mixins.respond-max(tablet) {
+            width: 306px;
         }
         &-image {
             border-top-left-radius: 16px;
@@ -63,9 +82,13 @@
             width: 360px;
             height: 240px;
             object-fit: cover;
+            @include mixins.respond-max(tablet) {
+                width: 306px;
+                height: 240px;
+            }
         }
         &-main {
-            padding: 28px 24px 32px;
+            padding: 28px 20px 32px;
             border: 1px solid #38383833;
             border-top: none;
             border-bottom-left-radius: 16px;
@@ -73,6 +96,9 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            @include mixins.respond-max(tablet) {
+                padding: 24px 20px 30px;
+            }
 
             & .inner-pagination {
                 display: flex;
@@ -98,7 +124,10 @@
             font-weight: bold;
             font-family: mixins.$font-secondary;
             margin-bottom: 8px;
-            @include mixins.type(20, 30);
+            @include mixins.type(20, 28);
+            @include mixins.respond-max(tablet) {
+                @include mixins.type(19, 28);
+            }
         }
         &-text {
             margin-bottom: 8px;
@@ -117,6 +146,9 @@
         display: flex;
         align-items: center;
         gap: 24px;
+        @include mixins.respond-max(tablet) {
+            display: none;
+        }
         &-prev {
             transform: rotate(180deg);
             display: flex;
@@ -142,14 +174,26 @@
         margin-left: auto;
         margin-top: 100px;
         text-align: right;
+        @include mixins.respond-max(tablet) {
+            margin-top: 40px;
+            text-align: left;
+            flex-direction: column;
+            padding: 30px 30px 166px;
+        }
         &-title {
             font-family: mixins.$font-secondary;
             margin-bottom: 16px;
             @include mixins.type(32, 36);
+            @include mixins.respond-max(tablet) {
+                @include mixins.type(26, 30);
+            }
         }
         &-text {
             margin-bottom: 24px;
             max-width: 492px;
+            @include mixins.respond-max(tablet) {
+                max-width: none;
+            }
         }
         &-action {
             @include mixins.btn();
@@ -159,11 +203,19 @@
                 width: fit-content;
                 margin-left: auto;
                 @include mixins.type(14, 18);
+                @include mixins.respond-max(tablet) {
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: 100%;
+                }
             }
         }
         &-info {
             margin-left: auto;
             padding-left: 590px;
+            @include mixins.respond-max(tablet) {
+                padding: 0;
+            }
         }
         &-img {
             position: absolute;
@@ -171,6 +223,15 @@
             top: -20px;
             width: 608px;
             height: 360px;
+            @include mixins.respond-max(tablet) {
+                width: 275px;
+                height: 164px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: auto;
+                bottom: -30px;
+            }
         }
     }
 }
