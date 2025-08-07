@@ -51,7 +51,7 @@ document
         }
 
         playBtn.addEventListener('click', () => {
-            pauseSliderVideos(sliderEl, video) // стопаем только внутри этого слайдера
+            pauseSliderVideos(sliderEl, video)
             video.controls = true
             video.play()
         })
@@ -63,32 +63,23 @@ document
 // ===== Инициализация Swiper =====
 const outerSwiper = new Swiper('.outer-swiper', {
     slidesPerView: 'auto',
-    spaceBetween: 16, // значение по умолчанию
-    freeMode: true,
+    spaceBetween: 16,
+
     navigation: {
         nextEl: '.works__controls-next',
         prevEl: '.works__controls-prev',
     },
     breakpoints: {
         768: {
-            // при ширине экрана >= 768px
             spaceBetween: 24,
-            freeMode: false,
         },
     },
     on: {
         slideChangeTransitionStart(swiper) {
-            pauseSliderVideos(swiper.el) // стопаем только в этом слайдере
+            pauseSliderVideos(swiper.el)
         },
     },
 })
-
-// Функция переключения на слайдерный режим
-function switchToSliderMode() {
-    outerSwiper.freeMode.disable() // отключаем свободный режим
-    outerSwiper.params.freeMode = false // обновляем параметры
-    outerSwiper.update() // обновляем слайдер
-}
 
 document.querySelectorAll('.inner-swiper').forEach((innerEl) => {
     const swiperInstance = new Swiper(innerEl, {
@@ -111,8 +102,6 @@ document.querySelectorAll('.inner-swiper').forEach((innerEl) => {
 const comandSwiper = new Swiper('.comand__slider', {
     slidesPerView: 'auto',
     spaceBetween: 16,
-    freeMode: true,
-    // loop: true,
     navigation: {
         nextEl: '.comand__controls-next',
         prevEl: '.comand__controls-prev',
@@ -121,8 +110,6 @@ const comandSwiper = new Swiper('.comand__slider', {
         768: {
             loop: true,
             slidesPerView: '3',
-            freeMode: false,
-            // при ширине экрана >= 768px
             spaceBetween: 24,
         },
     },
@@ -132,14 +119,12 @@ const comandSwiper = new Swiper('.comand__slider', {
 const reviewsSwiper = new Swiper('.reviews__slider', {
     slidesPerView: 'auto',
     spaceBetween: 16,
-    freeMode: true,
     navigation: {
         nextEl: '.reviews__controls-next',
         prevEl: '.reviews__controls-prev',
     },
     on: {
         slideChangeTransitionStart(swiper) {
-            // При смене слайда останавливаем видео в слайдере
             swiper.el.querySelectorAll('video').forEach((video) => {
                 video.pause()
             })
@@ -149,8 +134,6 @@ const reviewsSwiper = new Swiper('.reviews__slider', {
         768: {
             loop: true,
             slidesPerView: '3',
-            freeMode: false,
-            // при ширине экрана >= 768px
             spaceBetween: 24,
         },
     },
@@ -167,7 +150,6 @@ document.querySelectorAll('.reviews__slide-video').forEach((video) => {
         .querySelector('.reviews__slide-footer')
 
     playBtn.addEventListener('click', () => {
-        // Останавливаем другие видео внутри этого слайдера
         video
             .closest('.reviews__slider')
             .querySelectorAll('video')
@@ -194,18 +176,10 @@ document.querySelectorAll('.how__item-hdr').forEach((btn) => {
     btn.addEventListener('click', () => {
         const currentItem = btn.closest('.how__item')
 
-        // Если клик по уже активному — просто убрать active
         if (currentItem.classList.contains('active')) {
             currentItem.classList.remove('active')
             return
         }
-
-        // // Убираем active у всех
-        // document.querySelectorAll('.how__item').forEach((item) => {
-        //     item.classList.remove('active')
-        // })
-
-        // Добавляем active только текущему
         currentItem.classList.add('active')
     })
 })
@@ -214,18 +188,11 @@ document.querySelectorAll('.faq__item-hdr').forEach((btn) => {
     btn.addEventListener('click', () => {
         const currentItem = btn.closest('.faq__item')
 
-        // Если клик по уже активному — просто убрать active
         if (currentItem.classList.contains('active')) {
             currentItem.classList.remove('active')
             return
         }
 
-        // // Убираем active у всех
-        // document.querySelectorAll('.faq__item').forEach((item) => {
-        //     item.classList.remove('active')
-        // })
-
-        // Добавляем active только текущему
         currentItem.classList.add('active')
     })
 })
@@ -236,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const body = document.querySelector('body')
 
     function isMobile() {
-        return window.innerWidth <= 768 // можно изменить порог под нужный breakpoint
+        return window.innerWidth <= 768
     }
 
     // Открытие/закрытие по кнопке
@@ -266,10 +233,53 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    // Дополнительно: убираем locked при ресайзе на десктоп
     window.addEventListener('resize', function () {
         if (!isMobile()) {
             body.classList.remove('locked')
+        }
+    })
+})
+
+function scrollToElement(targetSelector, duration = 800) {
+    const target = document.querySelector(targetSelector)
+    if (!target) return
+
+    const startY = window.scrollY
+    const targetY = target.getBoundingClientRect().top + startY
+
+    const offset = window.innerWidth <= 767 ? 60 : 0
+    const finalY = targetY - offset
+
+    const distance = finalY - startY
+    const startTime = performance.now()
+
+    function scroll(currentTime) {
+        const timeElapsed = currentTime - startTime
+        const progress = Math.min(timeElapsed / duration, 1)
+        const ease = easeInOutQuad(progress)
+
+        window.scrollTo(0, startY + distance * ease)
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(scroll)
+        }
+    }
+
+    requestAnimationFrame(scroll)
+}
+
+function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href')
+        const targetElement = document.querySelector(targetId)
+
+        if (targetElement) {
+            e.preventDefault()
+            scrollToElement(targetId, 1000)
         }
     })
 })
