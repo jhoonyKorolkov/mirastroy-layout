@@ -29,7 +29,7 @@
         position: relative;
         @include mixins.respond-max(tablet) {
             // display: block;
-            grid-template-columns: 1fr 165px;
+            display: block;
         }
     }
 
@@ -139,6 +139,7 @@
             width: 165px;
             right: 0;
             position: absolute;
+            top: 0;
         }
         &-bg {
             @include mixins.respond-max(tablet) {

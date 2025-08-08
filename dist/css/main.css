@@ -920,7 +920,7 @@ h2 {
 }
 @media screen and (max-width: 1240px) {
   .first__wrapper {
-    grid-template-columns: 1fr 165px;
+    display: block;
   }
 }
 .first__info {
@@ -1053,6 +1053,7 @@ h2 {
     width: 165px;
     right: 0;
     position: absolute;
+    top: 0;
   }
 }
 @media screen and (max-width: 1240px) {
