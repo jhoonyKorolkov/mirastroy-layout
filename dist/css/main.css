@@ -1079,7 +1079,7 @@ h2 {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   transition: opacity 0.8s ease-in-out;
 }
 .first__images-wrap.active {
