@@ -283,3 +283,22 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
         }
     })
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = Array.from(document.querySelectorAll('.first__images-wrap'))
+    let current = 0
+
+    // Инициализируем все карточки: первая — active, остальные — inactive
+    cards.forEach((c, i) => c.classList.add(i === 0 ? 'active' : 'inactive'))
+
+    setInterval(() => {
+        // текущую делаем inactive
+        cards[current].classList.replace('active', 'inactive')
+
+        // переключаем индекс
+        current = (current + 1) % cards.length
+
+        // новую делаем active
+        cards[current].classList.replace('inactive', 'active')
+    }, 3000)
+})

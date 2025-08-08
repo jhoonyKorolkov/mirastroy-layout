@@ -25,10 +25,11 @@
     &__wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 32px;
+        // grid-gap: 32px;
         position: relative;
         @include mixins.respond-max(tablet) {
-            display: block;
+            // display: block;
+            grid-template-columns: 1fr 165px;
         }
     }
 
@@ -131,112 +132,70 @@
 
     &__images {
         position: relative;
+        width: 576px;
+        height: auto;
+        right: 254px;
         @include mixins.respond-max(tablet) {
-            z-index: -1;
-            position: absolute;
-            top: 0;
+            width: 165px;
             right: 0;
-            width: 100%;
-            height: 300px;
-            // &::before {
-            //     content: '';
-            //     width: 100%;
-            //     height: 100%;
-            //     background: rgba(255, 255, 255, 0.5);
-            //     position: absolute;
-            //     z-index: 4;
-            //     display: block;
-            //     top: -40px;
-            // }
+            position: absolute;
         }
-
         &-bg {
-            position: absolute;
-            right: 0;
-            width: 100%;
-            min-width: 552px;
             @include mixins.respond-max(tablet) {
-                min-width: auto;
                 width: 160px;
                 height: 130px;
-                top: -20px;
             }
         }
+    }
 
-        &-one,
-        &-two,
-        &-three {
+    &__images-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.8s ease-in-out;
+        @include mixins.respond-max(tablet) {
+            border-radius: 4px;
+        }
+
+        &::before {
+            content: '';
             position: absolute;
-            border-radius: 16px;
-            // box-shadow: 0px 0px 16px 0px #3838383d;
-            animation: zIndexLoop 9s infinite;
-            @include mixins.respond-max(tablet) {
-                border-radius: 4px;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.4);
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        // активная карточка
+        &.active {
+            z-index: 3;
+            // opacity: 1;
+            // transform: translate(0, 0) scale(1.02);
+
+            &::before {
+                content: none;
             }
         }
 
-        /* Позиции */
-        &-one {
-            right: 20px;
-            top: 20px;
-            width: 552px;
-            height: 380px;
-            animation-delay: 0s;
+        // задаём смещения для «уровней»
+        &:nth-child(1) {
+            transform: translate(0px, 80px);
             @include mixins.respond-max(tablet) {
-                width: 164px;
-                height: 112px;
-                top: 10px;
-                right: 30px;
+                transform: translate(-10px, 10px);
             }
         }
-
-        &-two {
-            right: 110px;
-            top: -20px;
-            width: 380px;
-            height: 476px;
-            animation-delay: 3s;
+        &:nth-child(2) {
+            transform: translate(80px, -20px);
             @include mixins.respond-max(tablet) {
-                width: 120px;
-                height: 150px;
-                top: 10px;
-                right: 40px;
-                // display: none;
+                transform: translate(20px, -10px);
             }
         }
-
-        &-three {
-            right: 60px;
-            bottom: 120px;
-            width: 496px;
-            height: 348px;
-            animation-delay: 6s;
+        &:nth-child(3) {
+            transform: translate(-20px, 20px);
             @include mixins.respond-max(tablet) {
-                width: 164px;
-                height: 112px;
-                top: -12px;
-                right: 8px;
-                // right: auto;
-            }
-        }
-
-        /* Анимация по z-index */
-        @keyframes zIndexLoop {
-            0% {
-                z-index: 3;
-                box-shadow: 0px 0px 16px 0px #3838383d;
-            }
-            33.33% {
-                z-index: 3;
-                box-shadow: 0px 0px 16px 0px #3838383d;
-            }
-            33.34% {
-                z-index: 1;
-                box-shadow: none;
-            }
-            100% {
-                z-index: 1;
-                box-shadow: none;
+                transform: translate(-20px, 20px);
             }
         }
     }
