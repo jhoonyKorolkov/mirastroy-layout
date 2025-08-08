@@ -1065,7 +1065,7 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: max-content;
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.8s ease-in-out;
