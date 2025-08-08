@@ -146,11 +146,15 @@
 .video-modal {
     position: fixed;
     inset: 0;
-    z-index: 10;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    // background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
+    // width: 100%;
+    // top: 0;
+    // left: 0;
+    // height: 100vh;
 
     &__content {
         position: relative;
@@ -173,7 +177,7 @@
     }
 
     &__close {
-        position: absolute;
+        position: fixed;
         top: 10px;
         right: 10px;
         background: none;
@@ -183,8 +187,8 @@
         cursor: pointer;
         z-index: 12;
         @include mixins.respond-max(tablet) {
-            top: 40px;
-            right: 10px;
+            top: 10vh;
+            right: 40px;
         }
     }
 

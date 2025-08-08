@@ -1295,10 +1295,11 @@ h2 {
 .video-modal {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
 }
 .video-modal__content {
   position: relative;
@@ -1320,7 +1321,7 @@ h2 {
   object-fit: cover;
 }
 .video-modal__close {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   background: none;
@@ -1332,8 +1333,8 @@ h2 {
 }
 @media screen and (max-width: 1240px) {
   .video-modal__close {
-    top: 40px;
-    right: 10px;
+    top: 10vh;
+    right: 40px;
   }
 }
 .video-modal[hidden] {
