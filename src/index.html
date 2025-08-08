@@ -25,6 +25,13 @@
     @@include('../templates/dashboard/contacts.html')
     <!---->
     @@include('../templates/footer.html')
+    <div class="video-modal" hidden>
+      <div class="video-modal__backdrop"></div>
+      <div class="video-modal__content">
+        <button class="video-modal__close">✕</button>
+        <video class="video-modal__video" playsinline muted controls preload="metadata"></video>
+      </div>
+    </div>
   </main>
 
   <!---->

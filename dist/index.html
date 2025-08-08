@@ -217,7 +217,7 @@
             <source src="/videos/one.mp4" type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
-          <button type="button" class="why__blog-play">
+          <button type="button" class="why__blog-play video-play-btn" data-video-src="/videos/one.mp4">
             <svg class="icon" width="72" height="72">
               <use href="/images/sprite.svg#play" fill="currentColor"></use>
             </svg>
@@ -320,7 +320,7 @@
   </div>
   <div class="works__slider swiper outer-swiper">
     <div class="swiper-wrapper">
-      <div class="works__slide swiper-slide">
+      <!-- <div class="works__slide swiper-slide">
         <video class="works__slide-video" muted playsinline preload="none" poster="/images/person.png">
           <source src="/videos/one.mp4" type="video/mp4" />
           Ваш браузер не поддерживает видео.
@@ -330,12 +330,22 @@
             <use href="/images/sprite.svg#play" fill="currentColor"></use>
           </svg>
         </button>
-      </div>
+      </div> -->
       <div class="works__item swiper-slide">
         <div class="works__item-images swiper inner-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img class="works__item-image" src="/images/work-slide.png">
+            <div class="swiper-slide ">
+              <div class="works__item-wrap works__slide">
+                <video class="works__slide-video" muted playsinline preload="none" poster="/images/work-slide.png">
+                  <source src="/videos/one.mp4" type="video/mp4" />
+                  Ваш браузер не поддерживает видео.
+                </video>
+                <button type="button" class="works__slide-play video-play-btn" data-video-src="/videos/one.mp4">
+                  <svg class="icon" width="72" height="72">
+                    <use href="/images/sprite.svg#play" fill="currentColor"></use>
+                  </svg>
+                </button>
+              </div>
             </div>
             <div class="swiper-slide">
               <img class="works__item-image" src="/images/work-slide.png">
@@ -689,7 +699,7 @@
             <source src="/videos/one.mp4" type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
-          <button type="button" class="reviews__slide-play">
+          <button type="button" class="reviews__slide-play video-play-btn" data-video-src="/videos/one.mp4">
             <svg class="icon" width="72" height="72">
               <use href="/images/sprite.svg#play" fill="currentColor"></use>
             </svg>
@@ -1123,6 +1133,13 @@
   </div>
 </footer>
 
+    <div class="video-modal" hidden>
+      <div class="video-modal__backdrop"></div>
+      <div class="video-modal__content">
+        <button class="video-modal__close">✕</button>
+        <video class="video-modal__video" playsinline muted controls preload="metadata"></video>
+      </div>
+    </div>
   </main>
 
   <!---->
