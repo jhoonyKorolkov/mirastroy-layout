@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initReviewSliderVideos()
     initHowAccordion()
     initFaqAccordion()
+    initWhyVideo()
+    closeModal()
 })
 
 /* -------------------------------
@@ -173,33 +175,17 @@ function initSwipers() {
             if (v !== exceptVideo) v.pause()
         })
     }
-    // ===== Логика для блока WHY =====
-    const why = document.querySelector('.why__blog')
-    if (why) {
-        const video = why.querySelector('video')
-        const playBtn = why.querySelector('.why__blog-play')
-
-        const togglePlayBtn = (show) => {
-            playBtn.style.display = show ? 'block' : 'none'
-        }
-
-        playBtn.addEventListener('click', () => {
-            video.controls = true
-            video.play()
-        })
-
-        video.addEventListener('pause', () => togglePlayBtn(true))
-        video.addEventListener('play', () => togglePlayBtn(false))
-    }
 
     // ===== Логика для outer-swiper =====
+
     document
         .querySelectorAll('.outer-swiper .works__slide-video')
         .forEach((video) => {
             const slideEl = video.closest('.works__slide')
             const playBtn = slideEl.querySelector('.works__slide-play')
             const sliderEl = video.closest('.outer-swiper')
-
+            const isMobile = window.innerWidth <= 768
+            if (isMobile) return
             const togglePlayBtn = (show) => {
                 playBtn.style.display = show ? 'block' : 'none'
             }
@@ -308,6 +294,8 @@ function initGlobalVideoPause() {
 }
 
 function initReviewSliderVideos() {
+    const isMobile = window.innerWidth <= 768
+    if (isMobile) return
     document.querySelectorAll('.reviews__slide-video').forEach((video) => {
         const slide = video.closest('.reviews__slide')
         const playBtn = slide.querySelector('.reviews__slide-play')
@@ -352,5 +340,39 @@ function initFaqAccordion() {
             const item = btn.closest('.faq__item')
             item.classList.toggle('active')
         })
+    })
+}
+
+function initWhyVideo() {
+    const isMobile = window.innerWidth <= 768
+    if (isMobile) return
+
+    const why = document.querySelector('.why__blog')
+    if (why) {
+        const video = why.querySelector('video')
+        const playBtn = why.querySelector('.why__blog-play')
+
+        const togglePlayBtn = (show) => {
+            playBtn.style.display = show ? 'block' : 'none'
+        }
+
+        playBtn.addEventListener('click', () => {
+            video.controls = true
+            video.play()
+        })
+
+        video.addEventListener('pause', () => togglePlayBtn(true))
+        video.addEventListener('play', () => togglePlayBtn(false))
+    }
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal')
+    const closeBtn = modal.querySelector('.modal__close')
+
+    if (!modal) return
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show')
     })
 }

@@ -1,635 +1,117 @@
-@use "../../globals" as mixins;
+@use '../../globals' as mixins;
 
 .modal {
-  z-index: 10;
-  display: none;
-
-  &.show {
-    display: block;
-  }
-
-  .overlay {
-    background: rgba(23, 26, 33, 0.9);
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 4;
-    transition: 0.5s;
-  }
-
-  &__wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-
-    @include mixins.respond-max(phone) {
-      top: auto;
-      max-height: 100%;
-      height: 100%;
-    }
-  }
-
-  &__scroll {
-    position: relative;
-    width: 100%;
-    max-width: 656px;
-    margin: 100px auto 50px;
-    z-index: 3;
-    height: auto;
-
-    @media screen and (max-width: 1600px) {
-      margin: 40px auto;
-    }
-    @include mixins.respond-max(tablet) {
-      max-width: 100%;
-      overflow: auto;
-      overscroll-behavior: none;
-      height: 100%;
-      margin: 0;
-    }
-    @include mixins.respond-max(phone) {
-      margin: 0 auto;
-    }
-  }
-
-  &__box {
-    background: var(--bg);
-    position: relative;
-    z-index: 5;
-    border-radius: 16px;
-    overflow: hidden;
-
-    @include mixins.respond-max(tablet) {
-      border-radius: 0;
-      overflow-y: auto;
-      height: 100%;
-    }
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    padding: 30px 30px 0;
-
-    @include mixins.respond-max(tablet) {
-      padding: 30px 20px 0;
-    }
-  }
-
-  &__status {
-    width: 100%;
+    inset: 0;
+    z-index: 9999;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-    &__item {
-      border: 1px solid #d9d9d9;
-      padding: 2px 8px;
-      @include mixins.type(14, 20);
-      color: #ababab;
-      border-radius: 6px;
-      &.urgent {
-        border-color: transparent;
-        background: linear-gradient(
-          90.65deg,
-          rgba(94, 115, 226, 0.2) -2.24%,
-          rgba(152, 94, 226, 0.2) 103.94%
-        );
-        color: #796ae2;
-      }
+    justify-content: center;
+    background: rgba(56, 56, 56, 0.8);
+    display: none;
+    &.show {
+        display: flex;
     }
-    &__date {
-      @include mixins.type(14, 20);
-      color: #ababab;
-    }
-  }
 
-  &__title {
-    @include mixins.type(24, 32);
-    font-weight: bold;
+    // width: 100%;
+    // top: 0;
+    // left: 0;
+    // height: 100vh;
 
-    &.--small {
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 500;
-      color: var(--text_gray);
+    &__wrap {
+        padding-top: 40px;
+        position: relative;
+        top: -40px;
     }
-    &.--big {
-      font-size: 26px;
-      line-height: 30px;
-    }
-  }
 
-  &__content {
-    padding: 0 30px 30px;
-    overflow-y: auto;
-    overscroll-behavior: none;
-    height: 60vh;
-    @include mixins.respond-max(tablet) {
-      margin: 0;
-      height: auto;
-      padding: 0 20px 60px;
+    &__content {
+        max-width: 360px;
+        background: var(--bg);
+        border-radius: 16px;
+        padding: 40px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__image {
+        margin: auto;
+    }
+
+    &__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    &__title {
+        font-family: mixins.$font-secondary;
+        text-align: center;
+        margin-bottom: 20px;
+        @include mixins.type(20, 30);
     }
 
     &__text {
-      @include mixins.type(14, 20);
-      margin-bottom: 4px;
+        text-align: center;
+        @include mixins.type(14, 20);
     }
+}
 
-    & .option {
-      color: #ababab;
-      @include mixins.type(14, 20);
-    }
-  }
-
-  &__main {
-    display: grid;
-    grid-gap: 24px;
-    overflow-y: auto;
-    overscroll-behavior: none;
-    margin-top: 24px;
-    height: 60vh;
-    padding: 0 30px 30px;
-
-    @include mixins.respond-max(tablet) {
-      margin: 0;
-      height: auto;
-      padding: 0 20px 60px;
-
-      &.--over {
-        margin-top: 20px;
-
-        .modal__main-image {
-          width: 100%;
-          max-width: 335px;
-        }
-        .modal__main-text {
-          color: #6c6e75;
-        }
-      }
-    }
-
-    &-title {
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 30px;
-    }
-  }
-
-  &__footer {
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 16px 30px;
-    position: sticky;
-    bottom: 0;
-    z-index: 4;
-    width: 100%;
-    max-width: 656px;
-    background: var(--bg);
-    box-shadow: 0px -2px 16px 0px #3233381a;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    justify-content: center;
+    background: rgba(56, 56, 56, 0.8);
+    // width: 100%;
+    // top: 0;
+    // left: 0;
+    // height: 100vh;
 
-    @include mixins.respond-max(tablet) {
-      max-width: 100%;
-      flex-direction: column;
-      padding: 16px 20px 16px 20px;
-    }
-
-    &-cancel {
-      padding: 12px 20px;
-      height: 44px;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: var(--violet);
-      border: 2px solid var(--violet);
-      border-radius: 8px;
-
-      @include mixins.respond-max(tablet) {
-        display: none;
-      }
-    }
-
-    &-action {
-      padding: 12px 60px;
-      height: 44px;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: linear-gradient(90.65deg, #5e73e2 -2.24%, #985ee2 103.94%);
-      border-radius: 8px;
-      width: max-content;
-
-      @include mixins.respond-max(tablet) {
-        width: 100%;
-      }
-    }
-
-    &-agree {
-      padding: 17px 40px;
-      height: 58px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: var(--link);
-      border: 2px solid var(--link);
-      border-radius: 30px;
-      width: max-content;
-
-      @include mixins.respond-max(tablet) {
-        margin: 0 auto;
-      }
-    }
-
-    &-reset {
-      margin-right: auto;
-      font-size: 14px;
-      line-height: 20px;
-      color: var(--violet);
-
-      @include mixins.respond-max(tablet) {
-        margin: 0;
-        order: 1;
-      }
-    }
-  }
-
-  &__switched {
-    &-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      @include mixins.type(16, 24);
-      font-weight: bold;
-    }
-
-    &-list {
-      display: flex;
-      padding: 4px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    &-label {
-      display: flex;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-      background: var(--bg);
-      border-radius: 12px;
-
-      .radio {
-        display: none;
-      }
-      .custom {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        width: 100%;
-        height: 40px;
-        padding: 10px 0;
-        font-size: 14px;
-        line-height: 20px;
-        border-radius: 8px;
-      }
-      .radio:checked + .custom {
-        color: var(--violet);
-        background: var(--switch);
-      }
-    }
-  }
-
-  &__city {
-    &.active {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 5;
-      padding: 30px;
-      background: var(--bg);
-      display: flex;
-
-      @include mixins.respond-max(tablet) {
-        position: fixed;
-      }
-
-      .modal__city-wrapper {
-        flex: 1;
-      }
-      .modal__city-title,
-      .modal__city-tags {
-        display: none;
-      }
-      .modal__city-hide-close {
-        display: flex;
-      }
-      .modal__city-list {
-        display: flex;
-      }
-    }
-
-    &-hide-close {
-      display: none;
-    }
-
-    &-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      @include mixins.type(16, 24);
-      font-weight: bold;
-    }
-
-    &-field {
-      position: relative;
-
-      .icon,
-      &-reset {
-        position: absolute;
-        top: 15px;
-        right: 16px;
-        cursor: pointer;
-        display: block;
-        flex-shrink: 0;
-      }
-    }
-
-    &-search {
-      padding: 15px 16px;
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
-
-    &-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-
-      &-item {
-        .radio {
-          display: none;
-        }
-        .custom {
-          padding: 6px 10px;
-          border: 1px solid var(--border);
-          border-radius: 6px;
-          font-size: 13px;
-          line-height: 18px;
-          cursor: pointer;
-        }
-        .radio:checked + .custom {
-          color: var(--violet);
-          background: var(--switch);
-          border-color: transparent;
-        }
-      }
-    }
-
-    &-list {
-      display: none;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 20px;
-      height: calc(100% - 40px);
-      padding-bottom: 20px;
-      padding-left: 16px;
-      margin-top: 20px;
-      background: var(--bg);
-      overflow: auto;
-      overscroll-behavior: contain;
-    }
-
-    &-item {
-      font-size: 14px;
-      line-height: 20px;
-      cursor: pointer;
-    }
-  }
-
-  &__choice {
-    &-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      @include mixins.type(16, 24);
-      font-weight: bold;
-    }
-
-    &-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    &-label {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 8px;
-
-      .checkbox,
-      .radio {
-        display: none;
-      }
-      .custom-big {
-        padding: 15px 10px;
-        font-size: 14px;
-        line-height: 20px;
-        height: 50px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-      }
-      .checkbox:checked + .custom-big,
-      .radio:checked + .custom-big {
-        color: var(--violet);
-        background: var(--switch);
-        border-color: transparent;
-      }
-    }
-  }
-
-  &__special {
-    &.active {
-      .modal__special-list {
-        visibility: visible;
-        opacity: 1;
-        margin-top: 12px;
-        max-height: 500px;
-        grid-gap: 16px;
-      }
-      .icon {
-        transform: rotate(180deg);
-      }
-    }
-
-    &-title {
-      display: flex;
-      gap: 10px;
-      cursor: pointer;
-      width: max-content;
-      margin-bottom: 0;
-      @include mixins.type(16, 24);
-      font-weight: bold;
-    }
-
-    &-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 16px;
-      visibility: hidden;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-
-      @include mixins.respond-max(tablet) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    &-label {
-      display: flex;
-      gap: 10px;
-      cursor: pointer;
-
-      .radio {
-        display: none;
-      }
-      .custom-small {
+    &__wrap {
+        padding-top: 40px;
         position: relative;
-        width: 20px;
-        height: 20px;
-        border: 1px solid var(--border);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        top: -40px;
+    }
 
-        &::before {
-          content: "";
-          position: absolute;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: var(--violet);
-          display: block;
-          visibility: hidden;
+    &__content {
+        position: relative;
+        overflow: hidden;
+        width: 90vw; // Можно адаптивно
+        max-width: 360px;
+        // aspect-ratio: 9 / 16; // Например, вертикальное видео
+        border-radius: 16px;
+        border: 3px solid var(--main);
+        background: black;
+        @include mixins.respond-max(tablet) {
+            aspect-ratio: 3 /4;
         }
-      }
-      .radio:checked + .custom-small::before {
-        visibility: visible;
-      }
-    }
-  }
-
-  &__video {
-    position: relative;
-
-    @include mixins.respond-max(tablet) {
-      margin-top: 150px;
-      padding: 0 20px;
     }
 
-    &-close {
-      position: absolute;
-      top: -34px;
-      right: 0;
-      width: 24px;
-      height: 24px;
-      background: var(--bg);
-      display: block;
-      z-index: 5;
-
-      @include mixins.respond-max(tablet) {
-        right: 20px;
-      }
-    }
-  }
-
-  &__symptoms {
-    &-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      @include mixins.type(16, 24);
-      font-weight: bold;
-      cursor: pointer;
+    &__video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
-    &-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 16px;
-
-      @include mixins.respond-max(tablet) {
-        grid-template-columns: 1fr;
-      }
+    &__close {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 12;
+        @include mixins.respond-max(tablet) {
+            // top: 10vh;
+            // right: 40px;
+        }
     }
 
-    &-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-
-      .checkbox {
+    &[hidden] {
         display: none;
-      }
-      .custom {
-        width: 20px;
-        height: 20px;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-
-        .icon {
-          visibility: hidden;
-          flex-shrink: 0;
-        }
-      }
-      .checkbox:checked + .custom {
-        background: var(--violet);
-        border-color: var(--violet);
-
-        .icon {
-          visibility: visible;
-          flex-shrink: 0;
-        }
-      }
     }
-
-    &-more {
-      margin-top: 12px;
-      font-size: 14px;
-      line-height: 20px;
-      color: var(--violet);
-    }
-  }
 }

@@ -6,6 +6,8 @@
 @use 'chunks/header';
 @use 'chunks/footer';
 
+@use 'chunks/misc/modal';
+
 @use 'chunks/dashboard/first';
 @use 'chunks/dashboard/why';
 @use 'chunks/dashboard/works';
