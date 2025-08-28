@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="/css/swiper.min.css" />
+
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -204,6 +205,7 @@
 </section>
 
     <!---->
+    <!-- <div id="map" style="width: 100%; height: 500px"></div> -->
     <section class="why">
   <img class="why__bg" src="/images/light-bg.svg" alt="bg">
   <div class="wrap">
@@ -1052,8 +1054,45 @@
   </div>
 </section>
 
+
     <!---->
-    <footer class="footer">
+
+    <div class="video-modal" hidden>
+      <div class="video-modal__backdrop"></div>
+      <div class="video-modal__wrap">
+        <button class="video-modal__close">✕</button>
+        <div class="video-modal__content">
+          <video class="video-modal__video" playsinline controls preload="metadata"></video>
+        </div>
+      </div>
+    </div>
+    <div class="modal show">
+      <div class="modal__backdrop"></div>
+      <div class="modal__wrap">
+        <div class="modal__content">
+          <button class="modal__close">
+            <svg class="icon" width="34" height="34">
+              <use href="/images/sprite.svg#close" fill="currentColor"></use>
+            </svg>
+          </button>
+          <picture>
+            <source srcset="/images/complete@2x.webp 2x, /images/complete.webp 1x" type="image/webp">
+            <source srcset="/images/complete@2x.png 2x, /images/complete.png 1x" type="image/png">
+            <img src="/images/complete.png" alt="" loading="lazy" class="modal__image">
+          </picture>
+          <div class="modal__title">
+            Спасибо!<br />
+            Ваша заявка получена
+          </div>
+          <div class="modal__text">
+            Наш менеджер с вами свяжется в ближайшее время для уточнения деталей проекта
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
   <div class="wrap">
     <div class="footer__wrapper">
       <div class="footer__box">
@@ -1122,43 +1161,12 @@
   </div>
 </footer>
 
-    <div class="video-modal" hidden>
-      <div class="video-modal__backdrop"></div>
-      <div class="video-modal__wrap">
-        <button class="video-modal__close">✕</button>
-        <div class="video-modal__content">
-          <video class="video-modal__video" playsinline controls preload="metadata"></video>
-        </div>
-      </div>
-    </div>
-    <div class="modal show">
-      <div class="modal__backdrop"></div>
-      <div class="modal__wrap">
-        <div class="modal__content">
-          <button class="modal__close">
-            <svg class="icon" width="34" height="34">
-              <use href="/images/sprite.svg#close" fill="currentColor"></use>
-            </svg>
-          </button>
-          <picture>
-            <source srcset="/images/complete@2x.webp 2x, /images/complete.webp 1x" type="image/webp">
-            <source srcset="/images/complete@2x.png 2x, /images/complete.png 1x" type="image/png">
-            <img src="/images/complete.png" alt="" loading="lazy" class="modal__image">
-          </picture>
-          <div class="modal__title">
-            Спасибо!<br />
-            Ваша заявка получена
-          </div>
-          <div class="modal__text">
-            Наш менеджер с вами свяжется в ближайшее время для уточнения деталей проекта
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
   <!---->
   <script src="./js/swiper.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=37ed3a59-9314-4329-8eb2-5a08f1fbba47&lang=ru_RU"
+  type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
 <script src="./js/main.js"></script>
 
   <!---->

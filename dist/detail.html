@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css" />
+  <link rel="stylesheet" href="/css/swiper.min.css" />
+
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+
+<body>
+  <header class="header">
+  <div class="wrap">
+    <div class="header__box">
+      <a href="/" class="header__logo">
+        <svg class="icon" width="210" height="24">
+          <use xlink:href="/images/sprite.svg#logo"></use>
+        </svg>
+      </a>
+      <div class="header__city">
+        калининград
+      </div>
+
+      <a href="tel:+79097751228" class="header__phone">
+        <svg class="icon" width="24" height="24">
+          <use href="/images/sprite.svg#phone" fill="currentColor"></use>
+        </svg>
+        +7 (909) 775 12 28
+      </a>
+
+      <a href="#dashform" class="header__chat">
+        <svg class="icon" width="32" height="32">
+          <use href="/images/sprite.svg#chat" fill="currentColor"></use>
+        </svg>
+        <span>
+          обсудить ремонт
+        </span>
+      </a>
+
+      <button type="button" class="header__burger">
+        <span>
+          меню
+        </span>
+
+        <svg class="icon icon-menu" width="24" height="24">
+          <use href="/images/sprite.svg#menu" fill="currentColor"></use>
+        </svg>
+        <svg class="icon icon-close" width="24" height="24">
+          <use href="/images/sprite.svg#close" fill="currentColor"></use>
+        </svg>
+        <svg class="icon icon-close-mob" width="14" height="14">
+          <use href="/images/sprite.svg#close-black" fill="currentColor"></use>
+        </svg>
+      </button>
+
+      <div class="header__dropdown">
+        <nav class="header__dropdown-nav">
+          <a href="" class="header__dropdown-link">услуги</a>
+          <a href="" class="header__dropdown-link">о компании</a>
+          <a href="" class="header__dropdown-link">вакансии</a>
+          <a href="" class="header__dropdown-link">советы</a>
+          <a href="" class="header__dropdown-link">Контакты</a>
+        </nav>
+        <div class="header__socials">
+          <a href="" class="header__socials-link">
+            <svg class="icon" width="24" height="24">
+              <use href="/images/sprite.svg#social-wapp" fill="currentColor"></use>
+            </svg>
+          </a>
+          <a href="" class="header__socials-link">
+            <svg class="icon" width="24" height="20">
+              <use href="/images/sprite.svg#social-tg" fill="currentColor"></use>
+            </svg>
+          </a>
+          <a href="" class="header__socials-link">
+            <svg class="icon" width="24" height="14">
+              <use href="/images/sprite.svg#social-vk" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="header__dropdown-text">
+          Мы работаем без выходных с 9:00 до 20:00
+          Ждем ваших писем и звонков:
+        </div>
+        <div class="header__dropdown-contact">
+          <svg class="icon" width="24" height="24">
+            <use href="/images/sprite.svg#mail" fill="currentColor"></use>
+          </svg>
+          <a href="mailto:mirremonta-39@yandex.ru">
+            mirremonta-39@yandex.ru
+          </a>
+        </div>
+        <div class="header__dropdown-contact">
+          <svg class="icon" width="24" height="24">
+            <use href="/images/sprite.svg#phone-white" fill="currentColor"></use>
+          </svg>
+          <div>
+            <a href="tel:+7 (967) 355 39 39">+7 (967) 355 39 39</a>
+            <a href="tel:+7 (905) 240 60 60">+7 (905) 240 60 60</a>
+          </div>
+        </div>
+        <div class="header__dropdown-contact">
+          <svg class="icon" width="24" height="24">
+            <use href="/images/sprite.svg#tg" fill="currentColor"></use>
+          </svg>
+          <a href="">
+            @mirastroy_kaliningrad
+          </a>
+        </div>
+        <a href="#dashform" class="header__dropdown-action" type="button">
+          Оставить заявку
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+  <!---->
+  <main class="main">
+    <!---->
+
+    <section class="detail-first">
+  <img class="detail-first__bg" src="/images/dark-bg.svg" alt="bg">
+  <div class="wrap">
+    <div class="detail-first__wrapper">
+      <div class="detail-first__images">
+        <picture>
+          <source srcset="/images/detail-first-mob@2x.webp 2x, /images/detail-first-mob.webp 1x"
+            media="(max-width: 1240px)" type="image/webp">
+          <source srcset="/images/detail-first-mob@2x.png 2x, /images/detail-first-mob.png 1x"
+            media="(max-width: 1240px)" type="image/png">
+          <source srcset="/images/detail-first@2x.webp 2x, /images/detail-first.webp 1x" type="image/webp">
+          <source srcset="/images/detail-first@2x.png 2x, /images/detail-first.png 1x" type="image/png">
+          <img src="/images/detail-first.png" alt="detail" loading="lazy" class="detail-first__image">
+        </picture>
+        <a data-fancybox data-src="/images/plan.png" data-caption="Планировка" class="detail-first__plan">
+          <img src="/images/plan.png" alt="plan" loading="lazy">
+          <svg class="icon" width="24" height="24">
+            <use href="/images/sprite.svg#zoom" fill="currentColor"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="detail-first__info">
+        <h1 class="detail-first__title">
+          <div>Ремонт</div> 2х ком., 42 м2
+        </h1>
+        <div class="detail-first__list">
+          <div class="detail-first__item">
+            <div class="detail-first__item-text">42 м2</div>
+            <div class="detail-first__item-title">площадь</div>
+          </div>
+          <div class="detail-first__item">
+            <div class="detail-first__item-text">Под ключ с мебелью</div>
+            <div class="detail-first__item-title">тип ремонта</div>
+          </div>
+          <div class="detail-first__item">
+            <div class="detail-first__item-text">8 000 000 руб</div>
+            <div class="detail-first__item-title">бюджет</div>
+          </div>
+          <div class="detail-first__item">
+            <div class="detail-first__item-text">56 дней / лето 2024</div>
+            <div class="detail-first__item-title">реализация</div>
+          </div>
+          <div class="detail-first__item">
+            <div class="detail-first__item-text">«Мичуринский парк», Калининград</div>
+            <div class="detail-first__item-title">расположение</div>
+          </div>
+        </div>
+        <a href="#all-photo" class="detail-first__all">
+          Все фото проекта
+        </a>
+        <div class="detail-first__manager">
+          <img src="/images/manager.png" alt="manager">
+          <div class="detail-first__manager-text">
+            <div class="detail-first__manager-name">Кристина, менеджер проекта</div>
+            <div class="detail-first__manager-more">
+              Подробно расскажет про ваш ремонт <a href="tel:+79130208952">+7 913 020 89 52</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <div class="before-after">
+      <div class="images">
+        <img src="/images/before.png" alt="До" class="before">
+        <div class="after-wrap">
+          <img src="/images/after.png" alt="После" class="after">
+        </div>
+        <div class="divider">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-modal" hidden>
+      <div class="video-modal__backdrop"></div>
+      <div class="video-modal__wrap">
+        <button class="video-modal__close">✕</button>
+        <div class="video-modal__content">
+          <video class="video-modal__video" playsinline controls preload="metadata"></video>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal__backdrop"></div>
+      <div class="modal__wrap">
+        <div class="modal__content">
+          <button class="modal__close">
+            <svg class="icon" width="34" height="34">
+              <use href="/images/sprite.svg#close" fill="currentColor"></use>
+            </svg>
+          </button>
+          <picture>
+            <source srcset="/images/complete@2x.webp 2x, /images/complete.webp 1x" type="image/webp">
+            <source srcset="/images/complete@2x.png 2x, /images/complete.png 1x" type="image/png">
+            <img src="/images/complete.png" alt="" loading="lazy" class="modal__image">
+          </picture>
+          <div class="modal__title">
+            Спасибо!<br />
+            Ваша заявка получена
+          </div>
+          <div class="modal__text">
+            Наш менеджер с вами свяжется в ближайшее время для уточнения деталей проекта
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+  <div class="wrap">
+    <div class="footer__wrapper">
+      <div class="footer__box">
+        <a href="" class="footer__logo">
+          <svg class="icon" width="360" height="50">
+            <use href="/images/sprite.svg#logo-footer" fill="currentColor"></use>
+          </svg>
+        </a>
+        <div class="footer__socials">
+          <a href="" class="footer__socials-link">
+            <svg class="icon" width="24" height="24">
+              <use href="/images/sprite.svg#social-wapp" fill="currentColor"></use>
+            </svg>
+          </a>
+          <a href="" class="footer__socials-link">
+            <svg class="icon" width="24" height="20">
+              <use href="/images/sprite.svg#social-tg" fill="currentColor"></use>
+            </svg>
+          </a>
+          <a href="" class="footer__socials-link">
+            <svg class="icon" width="24" height="14">
+              <use href="/images/sprite.svg#social-vk" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__box">
+        <nav class="footer__nav">
+          <a href="" class="footer__nav-link">
+            о компании
+          </a>
+          <a href="" class="footer__nav-link">
+            Наши работы
+          </a>
+          <a href="" class="footer__nav-link">
+            Контакты
+          </a>
+          <a href="" class="footer__nav-link">
+            услуги
+          </a>
+          <a href="" class="footer__nav-link">
+            Советы
+          </a>
+          <a href="" class="footer__nav-link">
+            Вакансии
+          </a>
+        </nav>
+        <div class="footer__docs">
+          <a href="" class="footer__docs-link">
+            Политика конфиденциальности
+          </a>
+          <a href="" class="footer__docs-link">
+            Пользовательское соглашение
+          </a>
+          <a href="" class="footer__docs-link">
+            Политика использования cookie
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copyrite">
+      Любая информация, представленная на этом сайте, носит исключительно ознакомительный характер, ни при каких
+      обстоятельствах не является публичной офертой, определяемой положениями статьи 437 ГК РФ. Актуальные цены
+      уточняйте у менеджеров компании. © 2025. Все права защищены
+    </div>
+  </div>
+</footer>
+
+  <!---->
+  <script src="./js/swiper.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=37ed3a59-9314-4329-8eb2-5a08f1fbba47&lang=ru_RU"
+  type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+<script src="./js/main.js"></script>
+
+  <!---->
+</body>
+
+</html>

@@ -379,5 +379,165 @@ function closeModal() {
     })
 }
 
+// ymaps.ready(init)
+
+// function init() {
+//     const map = new ymaps.Map('map', {
+//         center: [54.710426, 20.510398],
+//         zoom: 12,
+//     })
+
+//     const points = [
+//         {
+//             coords: [54.710426, 20.510398],
+//             images: [
+//                 '/images/first-screen-1.png',
+//                 '/images/first-screen-2.png',
+//                 '/images/first-screen-3.png',
+//             ],
+//             description: 'Центр Калининграда',
+//         },
+//         {
+//             coords: [54.718894, 20.499084],
+//             images: [
+//                 '/images/first-screen-1.png',
+//                 '/images/first-screen-2.png',
+//                 '/images/first-screen-3.png',
+//             ],
+//             description: 'Кафедральный собор (остров Канта)',
+//         },
+//         {
+//             coords: [54.705517, 20.5115],
+//             images: [
+//                 '/images/first-screen-1.png',
+//                 '/images/first-screen-2.png',
+//                 '/images/first-screen-3.png',
+//             ],
+//             description: 'Музей янтаря',
+//         },
+//         {
+//             coords: [54.71, 20.537],
+//             images: [
+//                 '/images/first-screen-1.png',
+//                 '/images/first-screen-2.png',
+//                 '/images/first-screen-3.png',
+//             ],
+//             description: 'Калининградский зоопарк',
+//         },
+//         {
+//             coords: [54.6972, 20.5088],
+//             images: [
+//                 '/images/first-screen-1.png',
+//                 '/images/first-screen-2.png',
+//                 '/images/first-screen-3.png',
+//             ],
+//             description: 'Фридландские ворота (музей)',
+//         },
+//     ]
+
+//     const BalloonLayout = ymaps.templateLayoutFactory.createClass(
+//         `<div class="balloon-content">
+//       <div class="swiper">
+//         <div class="swiper-wrapper">
+//           $[properties.images]
+//         </div>
+//         <div class="swiper-pagination"></div>
+//       </div>
+//       <div>$[properties.description]</div>
+//     </div>`,
+//         {
+//             build: function () {
+//                 BalloonLayout.superclass.build.call(this)
+//                 setTimeout(() => {
+//                     new Swiper('.swiper', {
+//                         pagination: {
+//                             el: '.swiper-pagination',
+//                             clickable: true,
+//                         },
+//                     })
+//                 }, 0)
+//             },
+//         },
+//     )
+
+//     points.forEach((point) => {
+//         const imagesHtml = point.images
+//             .map(
+//                 (img) => `<div class="swiper-slide"><img src="${img}" /></div>`,
+//             )
+//             .join('')
+
+//         const placemark = new ymaps.Placemark(
+//             point.coords,
+//             {
+//                 description: point.description,
+//                 images: imagesHtml,
+//             },
+//             {
+//                 balloonContentLayout: BalloonLayout,
+//                 balloonPanelMaxMapArea: 0,
+//                 hideIconOnBalloonOpen: false,
+//             },
+//         )
+
+//         map.geoObjects.add(placemark)
+//     })
+// }
+
+Fancybox.bind('[data-fancybox]', {
+    // Your custom options
+})
+
+const container = document.querySelector('.before-after')
+const afterWrap = container.querySelector('.after-wrap')
+const divider = container.querySelector('.divider')
+
+let isDragging = false
+
+function updateSlider(x) {
+    const rect = container.getBoundingClientRect()
+    let offset = x - rect.left
+    offset = Math.max(0, Math.min(offset, rect.width))
+    const percent = (offset / rect.width) * 100
+    afterWrap.style.width = `${percent}%`
+    divider.style.left = `${percent}%`
+}
+
+// ПК
+divider.addEventListener('mousedown', (e) => {
+    isDragging = true
+    updateSlider(e.clientX)
+})
+
+document.addEventListener('mousemove', (e) => {
+    if (isDragging) updateSlider(e.clientX)
+})
+
+document.addEventListener('mouseup', () => {
+    isDragging = false
+})
+
+// Тач-устройства
+divider.addEventListener(
+    'touchstart',
+    (e) => {
+        isDragging = true
+        updateSlider(e.touches[0].clientX)
+    },
+    { passive: true },
+)
+
+document.addEventListener(
+    'touchmove',
+    (e) => {
+        if (isDragging) updateSlider(e.touches[0].clientX)
+    },
+    { passive: true },
+)
+
+document.addEventListener('touchend', () => {
+    isDragging = false
+})
+
 /******/ })()
 ;
