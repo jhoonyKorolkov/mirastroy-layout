@@ -1,0 +1,133 @@
+@use '../../globals' as mixins;
+
+.review-client {
+    padding: 80px 0;
+    width: 100%;
+    position: relative;
+    background: #f0f0f0;
+    @include mixins.respond-max(tablet) {
+        padding: 40px 0;
+    }
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        @include mixins.respond-max(tablet) {
+            height: 280px;
+            object-fit: cover;
+        }
+    }
+
+    &__wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: 228px 1fr;
+        grid-gap: 60px;
+        @include mixins.respond-max(tablet) {
+            display: block;
+        }
+    }
+
+    &__box {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include mixins.respond-max(tablet) {
+            margin-top: 24px;
+        }
+        & .photo-review {
+            width: 456px;
+            height: 342px;
+            object-fit: cover;
+            border-radius: 16px;
+            position: relative;
+            @include mixins.respond-max(tablet) {
+                width: 100%;
+                height: auto;
+                max-width: 420px;
+                border-radius: 8px;
+            }
+        }
+    }
+
+    &__image {
+        margin-left: -30px;
+        z-index: -1;
+        @include mixins.respond-max(tablet) {
+            display: none;
+        }
+    }
+
+    &__slide {
+        position: relative;
+        flex-shrink: 0;
+        width: 360px;
+        border-radius: 16px;
+        overflow: hidden;
+        height: 500px;
+        @include mixins.respond-max(tablet) {
+            width: 306px;
+            height: 424px;
+        }
+
+        &-video {
+            width: 100%;
+            max-width: 360px;
+            height: 500px;
+
+            // aspect-ratio: 3 / 4; // вертикальное соотношение (Snapchat/TikTok/Stories)
+            border-radius: 16px;
+            object-fit: cover; // обрезает края, сохраняя пропорции
+            background: #000;
+            @include mixins.respond-max(tablet) {
+                max-width: 306px;
+                height: 458px;
+            }
+        }
+
+        &-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-footer {
+            font-family: mixins.$font-secondary;
+            padding: 22px 24px;
+            width: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(56, 56, 56, 0) 0%,
+                rgba(56, 56, 56, 0.8) 100%
+            );
+            color: var(--bg);
+            position: absolute;
+            bottom: 0;
+            @include mixins.type(20, 30);
+        }
+    }
+
+    &__text {
+        width: 100%;
+        margin-top: 32px;
+        @include mixins.respond-max(tablet) {
+            margin-top: 24px;
+        }
+        &__title {
+            font-family: mixins.$font-secondary;
+            margin-bottom: 16px;
+            @include mixins.type(20, 28);
+        }
+
+        & p {
+            margin-bottom: 16px;
+            color: #4f4f4f;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}

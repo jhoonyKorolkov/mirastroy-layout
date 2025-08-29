@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initImageSlider()
     initVideoModal()
     initBurgerMenu()
     initScrollAnchors()
@@ -8,32 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initHowAccordion()
     initFaqAccordion()
     initWhyVideo()
+    initProjectVideo()
+    initBeforAfter()
     closeModal()
 })
-
-/* -------------------------------
- *  Автослайдер карточек
- * ------------------------------- */
-function initImageSlider() {
-    const cards = Array.from(document.querySelectorAll('.first__images-wrap'))
-    if (cards.length === 0) return
-
-    let current = 0
-    cards.forEach((c, i) => c.classList.add(i === 0 ? 'active' : 'inactive'))
-
-    setInterval(() => {
-        cards[current].classList.replace('active', 'inactive')
-        current = (current + 1) % cards.length
-        cards[current].classList.replace('inactive', 'active')
-    }, 3000)
-}
 
 /* -------------------------------
  * Мобильная модалка с видео
  * ------------------------------- */
 function initVideoModal() {
-    const isMobile = window.innerWidth <= 768
-    if (!isMobile) return
+    // const isMobile = window.innerWidth <= 768
+
+    // if (!isMobile) return
 
     const modal = document.querySelector('.video-modal')
     if (!modal) return
@@ -50,7 +35,7 @@ function initVideoModal() {
         btn.addEventListener('click', () => {
             const src = btn.dataset.videoSrc
             if (!src) return
-
+            initGlobalVideoPause()
             modal.hidden = false
             modalVideo.src = src
             modalVideo.currentTime = 0
@@ -191,6 +176,7 @@ function initSwipers() {
             }
 
             playBtn.addEventListener('click', () => {
+                initGlobalVideoPause()
                 pauseSliderVideos(sliderEl, video)
                 video.controls = true
                 video.play()
@@ -278,6 +264,52 @@ function initSwipers() {
             },
         },
     })
+    // Инициализация слайдера отзывов
+    const projectSwiper = new Swiper('.project__slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 16,
+        navigation: {
+            nextEl: '.project__controls-next',
+            prevEl: '.project__controls-prev',
+        },
+        on: {
+            slideChangeTransitionStart(swiper) {
+                swiper.el.querySelectorAll('video').forEach((video) => {
+                    video.pause()
+                })
+            },
+        },
+        // breakpoints: {
+        //     768: {
+        //         loop: true,
+        //         slidesPerView: '3',
+        //         spaceBetween: 24,
+        //     },
+        // },
+    })
+
+    document
+        .querySelectorAll('.project__slider .project__slide-video')
+        .forEach((video) => {
+            const slideEl = video.closest('.project__slide')
+            const playBtn = slideEl.querySelector('.project__slide-play')
+            const sliderEl = video.closest('.project__slider')
+            const isMobile = window.innerWidth <= 768
+            if (isMobile) return
+            const togglePlayBtn = (show) => {
+                playBtn.style.display = show ? 'block' : 'none'
+            }
+
+            playBtn.addEventListener('click', () => {
+                initGlobalVideoPause()
+                pauseSliderVideos(sliderEl, video)
+                video.controls = true
+                video.play()
+            })
+
+            video.addEventListener('pause', () => togglePlayBtn(true))
+            video.addEventListener('play', () => togglePlayBtn(false))
+        })
 }
 
 function initGlobalVideoPause() {
@@ -309,6 +341,7 @@ function initReviewSliderVideos() {
                     if (v !== video) v.pause()
                 })
 
+            initGlobalVideoPause()
             video.controls = true
             video.play()
         })
@@ -357,6 +390,31 @@ function initWhyVideo() {
         }
 
         playBtn.addEventListener('click', () => {
+            initGlobalVideoPause()
+            video.controls = true
+            video.play()
+        })
+
+        video.addEventListener('pause', () => togglePlayBtn(true))
+        video.addEventListener('play', () => togglePlayBtn(false))
+    }
+}
+
+function initProjectVideo() {
+    const isMobile = window.innerWidth <= 768
+    if (isMobile) return
+
+    const project = document.querySelector('.project__blog')
+    if (project) {
+        const video = project.querySelector('video')
+        const playBtn = project.querySelector('.video-play-btn')
+
+        const togglePlayBtn = (show) => {
+            playBtn.style.display = show ? 'block' : 'none'
+        }
+
+        playBtn.addEventListener('click', () => {
+            initGlobalVideoPause()
             video.controls = true
             video.play()
         })
@@ -482,57 +540,76 @@ function closeModal() {
 //     })
 // }
 
+// 1) Проставляем уникальную группу каждому контейнеру слайдов
+document.querySelectorAll('[data-gallery-root]').forEach((root, i) => {
+    const group = `gallery-${i + 1}`
+
+    root.querySelectorAll('a[href]').forEach((a) => {
+        a.setAttribute('data-fancybox', group)
+    })
+})
+
+Fancybox.getDefaults().zoomEffect = false
+
 Fancybox.bind('[data-fancybox]', {
-    // Your custom options
+    animated: true,
+    showClass: 'f-fadeIn',
+    hideClass: 'f-fadeOut',
+    Images: {
+        zoom: false,
+    },
 })
+function initBeforAfter() {
+    const container = document.querySelector('.before-after')
 
-const container = document.querySelector('.before-after')
-const afterWrap = container.querySelector('.after-wrap')
-const divider = container.querySelector('.divider')
+    if (!container) return
+    const afterWrap = container.querySelector('.after-wrap')
+    const divider = container.querySelector('.divider')
 
-let isDragging = false
+    let isDragging = false
 
-function updateSlider(x) {
-    const rect = container.getBoundingClientRect()
-    let offset = x - rect.left
-    offset = Math.max(0, Math.min(offset, rect.width))
-    const percent = (offset / rect.width) * 100
-    afterWrap.style.width = `${percent}%`
-    divider.style.left = `${percent}%`
-}
+    function updateSlider(x) {
+        const rect = container.getBoundingClientRect()
+        let offset = x - rect.left
+        offset = Math.max(0, Math.min(offset, rect.width))
+        const percent = (offset / rect.width) * 100
+        afterWrap.style.width = `${percent}%`
+        divider.style.left = `${percent}%`
+    }
 
-// ПК
-divider.addEventListener('mousedown', (e) => {
-    isDragging = true
-    updateSlider(e.clientX)
-})
-
-document.addEventListener('mousemove', (e) => {
-    if (isDragging) updateSlider(e.clientX)
-})
-
-document.addEventListener('mouseup', () => {
-    isDragging = false
-})
-
-// Тач-устройства
-divider.addEventListener(
-    'touchstart',
-    (e) => {
+    // ПК
+    divider.addEventListener('mousedown', (e) => {
         isDragging = true
-        updateSlider(e.touches[0].clientX)
-    },
-    { passive: true },
-)
+        updateSlider(e.clientX)
+    })
 
-document.addEventListener(
-    'touchmove',
-    (e) => {
-        if (isDragging) updateSlider(e.touches[0].clientX)
-    },
-    { passive: true },
-)
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) updateSlider(e.clientX)
+    })
 
-document.addEventListener('touchend', () => {
-    isDragging = false
-})
+    document.addEventListener('mouseup', () => {
+        isDragging = false
+    })
+
+    // Тач-устройства
+    divider.addEventListener(
+        'touchstart',
+        (e) => {
+            isDragging = true
+            updateSlider(e.touches[0].clientX)
+        },
+        { passive: true },
+    )
+
+    document.addEventListener(
+        'touchmove',
+        (e) => {
+            if (isDragging) updateSlider(e.touches[0].clientX)
+        },
+        { passive: true },
+    )
+
+    document.addEventListener('touchend', () => {
+        isDragging = false
+    })
+}

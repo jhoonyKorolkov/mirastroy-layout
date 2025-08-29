@@ -1,0 +1,196 @@
+@use '../../globals' as mixins;
+
+.project {
+    padding: 80px 0;
+    width: 100%;
+    position: relative;
+    background: #f0f0f0;
+    @include mixins.respond-max(tablet) {
+        padding: 40px 0;
+    }
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        @include mixins.respond-max(tablet) {
+            height: 280px;
+            object-fit: cover;
+        }
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        grid-gap: 80px;
+        position: relative;
+        align-items: center;
+        @include mixins.respond-max(tablet) {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 24px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 40px;
+        position: relative;
+        @include mixins.respond-max(tablet) {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__title-slider {
+        @include mixins.type(20, 30);
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        margin-bottom: 12px;
+        display: flex;
+        gap: 18px;
+        padding-left: 5px;
+        @include mixins.type(18, 26);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @include mixins.respond-max(tablet) {
+            @include mixins.type(16, 24);
+            padding-left: 0;
+            gap: 12px;
+        }
+        &::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 5px;
+            border: 1px solid var(--text);
+            margin-top: 10px;
+            flex-shrink: 0;
+        }
+    }
+    &__blog {
+        &-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            @include mixins.respond-max(tablet) {
+                margin: 0;
+            }
+        }
+        &-video {
+            width: 100%;
+            max-width: 420px; // ограничение по ширине
+            height: 280px;
+            // aspect-ratio: 3 / 4; // вертикальное соотношение (Snapchat/TikTok/Stories)
+            border-radius: 16px;
+            object-fit: cover; // обрезает края, сохраняя пропорции
+            background: #000;
+            @include mixins.respond-max(tablet) {
+                // width: 140px;
+                border-radius: 8px;
+            }
+        }
+        &-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include mixins.respond-max(tablet) {
+                width: 56px;
+                height: 56px;
+                & .icon {
+                    width: 56px;
+                    height: 56px;
+                }
+            }
+        }
+    }
+
+    &__slider {
+        padding-right: 40px;
+        padding-left: calc((100vw - 1140px) / 2);
+        @include mixins.respond-max(tablet) {
+            padding-left: 20px;
+        }
+        & .swiper-slide {
+            width: auto;
+            // max-width: 262px;
+            // height: 198px;
+            object-fit: cover;
+        }
+
+        &-image {
+            border-radius: 8px;
+        }
+    }
+
+    &__slide {
+        position: relative;
+        flex-shrink: 0;
+        // width: 148px;
+
+        &-video {
+            border-radius: 8px;
+            // width: 360px;
+            // height: 240px;
+            width: 148px;
+            height: 198px;
+            object-fit: cover;
+            // @include mixins.respond-max(tablet) {
+            //     width: 306px;
+            //     height: 240px;
+            // }
+        }
+
+        &-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &__hdr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        position: relative;
+        margin-top: 40px;
+        @include mixins.respond-max(tablet) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        @include mixins.respond-max(tablet) {
+            display: none;
+        }
+        &-prev {
+            transform: rotate(180deg);
+            display: flex;
+            &.swiper-button-disabled {
+                opacity: 0.5;
+            }
+        }
+        &-next {
+            display: flex;
+            &.swiper-button-disabled {
+                opacity: 0.5;
+            }
+        }
+    }
+}

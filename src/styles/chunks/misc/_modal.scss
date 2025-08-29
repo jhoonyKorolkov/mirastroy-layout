@@ -78,21 +78,30 @@
     &__content {
         position: relative;
         overflow: hidden;
-        width: 90vw; // Можно адаптивно
-        max-width: 360px;
-        // aspect-ratio: 9 / 16; // Например, вертикальное видео
+        width: 100%; // адаптивная ширина
+        max-width: 90vw; // ширина максимум 90% экрана
+        aspect-ratio: 16 / 9; // горизонтальное видео (можно поменять)
         border-radius: 16px;
         border: 3px solid var(--main);
         background: black;
+        margin: 0 auto;
+
         @include mixins.respond-max(tablet) {
-            aspect-ratio: 3 /4;
+            aspect-ratio: 3 / 4;
+            max-width: 360px;
+            width: 100%;
         }
     }
 
     &__video {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain; // заменяем cover на contain, чтобы видео не обрезалось
+        display: block;
+        background-color: black;
+        @include mixins.respond-max(tablet) {
+            object-fit: cover;
+        }
     }
 
     &__close {

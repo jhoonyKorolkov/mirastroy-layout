@@ -9,17 +9,12 @@
     <!---->
 
     @@include('../templates/detail/detail-first.html')
-    <div class="before-after">
-      <div class="images">
-        <img src="/images/before.png" alt="До" class="before">
-        <div class="after-wrap">
-          <img src="/images/after.png" alt="После" class="after">
-        </div>
-        <div class="divider">
-          <span></span>
-        </div>
-      </div>
-    </div>
+    @@include('../templates/detail/project.html')
+    @@include('../templates/detail/progress.html')
+    @@include('../templates/detail/review-client.html')
+    @@include('../templates/dashboard/dashform.html')
+    @@include('../templates/dashboard/works.html')
+
 
     <div class="video-modal" hidden>
       <div class="video-modal__backdrop"></div>

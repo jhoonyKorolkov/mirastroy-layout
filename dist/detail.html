@@ -127,6 +127,9 @@
     <section class="detail-first">
   <img class="detail-first__bg" src="/images/dark-bg.svg" alt="bg">
   <div class="wrap">
+    <h1 class="detail-first__title-mob">
+      Ремонт 2х ком., 42 м2
+    </h1>
     <div class="detail-first__wrapper">
       <div class="detail-first__images">
         <picture>
@@ -152,23 +155,44 @@
         <div class="detail-first__list">
           <div class="detail-first__item">
             <div class="detail-first__item-text">42 м2</div>
+            <div class="detail-first__item-dotted"></div>
             <div class="detail-first__item-title">площадь</div>
           </div>
           <div class="detail-first__item">
             <div class="detail-first__item-text">Под ключ с мебелью</div>
+            <div class="detail-first__item-dotted"></div>
             <div class="detail-first__item-title">тип ремонта</div>
           </div>
           <div class="detail-first__item">
-            <div class="detail-first__item-text">8 000 000 руб</div>
+            <div class="detail-first__item-text">8 000 000 руб
+              <div class="detail-first__item-hide">
+                <svg class="icon" width="24" height="24">
+                  <use href="/images/sprite.svg#info" fill="currentColor"></use>
+                </svg>
+                <div class="hide-block">
+                  Бюджет актуален на дату реализации проекта, точную стоимость вашего ремонта уточняйте у менеджера
+                  Мирастрой
+                </div>
+              </div>
+
+            </div>
+            <div class="detail-first__item-dotted"></div>
             <div class="detail-first__item-title">бюджет</div>
           </div>
           <div class="detail-first__item">
             <div class="detail-first__item-text">56 дней / лето 2024</div>
+            <div class="detail-first__item-dotted"></div>
             <div class="detail-first__item-title">реализация</div>
           </div>
           <div class="detail-first__item">
-            <div class="detail-first__item-text">«Мичуринский парк», Калининград</div>
-            <div class="detail-first__item-title">расположение</div>
+            <div class="detail-first__item-text">«Мичуринский парк»</div>
+            <div class="detail-first__item-dotted"></div>
+            <div class="detail-first__item-title">жилой комплекс</div>
+          </div>
+          <div class="detail-first__item">
+            <div class="detail-first__item-text">Калиниград</div>
+            <div class="detail-first__item-dotted"></div>
+            <div class="detail-first__item-title">город</div>
           </div>
         </div>
         <a href="#all-photo" class="detail-first__all">
@@ -188,17 +212,564 @@
   </div>
 </section>
 
-    <div class="before-after">
-      <div class="images">
-        <img src="/images/before.png" alt="До" class="before">
-        <div class="after-wrap">
-          <img src="/images/after.png" alt="После" class="after">
-        </div>
-        <div class="divider">
-          <span></span>
+    <section class="project">
+  <img class="project__bg" src="/images/light-bg.svg" alt="bg">
+  <div class="wrap">
+    <h2 class="project__title">
+      О проекте
+    </h2>
+    <div class="project__wrapper">
+      <div class="project__info">
+        <ul class="project__list">
+          <li class="project__item">
+            Выполнен электромонтаж с полной заменой электрики от застройщика, новое РЩ и автоматы
+          </li>
+          <li class="project__item">
+            По сантехнике - опрессовали систему от застройщика и подключились к существующей системе
+          </li>
+          <li class="project__item">
+            Возвели перегородки по проекту, сформировав зону гардеробной в которой кстати расположились РЩ и система
+            хранения из Леруа
+          </li>
+          <li class="project__item">
+            Дизайн с WOW-эффектом, акцентная стена с гипсовыми плитами — объект выделяется на фоне конкурентов.
+          </li>
+          <li class="project__item">
+            Оптимизация бюджета, максимальный визуальный эффект с минимальными вложениями.
+          </li>
+        </ul>
+      </div>
+      <div class="project__blog">
+        <div class="project__blog-wrapper">
+          <video class="project__blog-video" playsinline preload="none" poster="/images/first-screen-1.png">
+            <source src="/videos/one.mp4" type="video/mp4" />
+            Ваш браузер не поддерживает видео.
+          </video>
+          <button type="button" class="project__blog-play video-play-btn" data-video-src="/videos/one.mp4">
+            <svg class="icon" width="72" height="72">
+              <use href="/images/sprite.svg#play" fill="currentColor"></use>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="wrap">
+    <div class="project__hdr">
+      <h4 class="project__title-slider">
+        Фото и видео проекта
+      </h4>
+      <div class="project__controls">
+        <button class="project__controls-prev" type="button">
+          <svg class="icon" width="56" height="24">
+            <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+          </svg>
+        </button>
+        <button class="project__controls-next" type="button">
+          <svg class="icon" width="56" height="24">
+            <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="project__slider swiper" data-gallery-root>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide project__slide">
+        <a href="/images/project-slide.png" data-fancybox="gallery">
+          <img class="project__slider-image" src="/images/project-slide.png" alt="">
+        </a>
+      </div>
+
+      <div class="swiper-slide project__slide">
+        <a href="/images/project-slide.png" data-fancybox="gallery">
+          <img class="project__slider-image" src="/images/project-slide.png" alt="">
+        </a>
+      </div>
+
+      <div class="swiper-slide project__slide">
+        <a href="/images/project-slide.png" data-fancybox="gallery">
+          <img class="project__slider-image" src="/images/project-slide.png" alt="">
+        </a>
+      </div>
+
+      <div class="swiper-slide project__slide">
+        <a href="/images/project-slide.png" data-fancybox="gallery">
+          <img class="project__slider-image" src="/images/project-slide.png" alt="">
+        </a>
+      </div>
+
+      <div class="swiper-slide project__slide">
+        <video class="project__slide-video" playsinline preload="none" poster="/images/project-slide-video.png">
+          <source src="/videos/one.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
+        <button type="button" class="project__slide-play video-play-btn" data-video-src="/videos/one.mp4">
+          <svg class="icon" width="32" height="32">
+            <use href="/images/sprite.svg#play" fill="currentColor"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="swiper-slide project__slide">
+        <a href="/images/project-slide.png" data-fancybox="gallery">
+          <img class="project__slider-image" src="/images/project-slide.png" alt="">
+        </a>
+      </div>
+
+      <div class="swiper-slide project__slide">
+        <a href="/images/project-slide.png" data-fancybox="gallery">
+          <img class="project__slider-image" src="/images/project-slide.png" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="progress">
+  <img class="progress__bg" src="/images/dark-bg.svg" alt="bg">
+  <div class="wrap">
+    <div class="progress__wrapper">
+      <h2 class="progress__title">
+        Ход ремонта
+      </h2>
+      <div class="progress__steps">
+        <p>
+          После согласования дизайна, бюджета проекта с менеджером Мирастрой, клиент успешно заключил договор с нами на
+          ремонт квартиры площадью 42 м2. И потом начался этап закупки материалов, далее первая бригада начала отделку
+          стен и потолка. Принимал работу прораб <a href="">Иван</a>.
+        </p>
+        <div class="progress__steps-images">
+          <img src="/images/project-slide.png" alt="step">
+          <img src="/images/project-slide.png" alt="step">
+        </div>
+        <p>
+          После контроля и приемки начался следующий этап работы:
+        </p>
+        <div class="progress__steps-images">
+          <img src="/images/project-slide.png" alt="step">
+          <img src="/images/project-slide.png" alt="step">
+          <img src="/images/project-slide.png" alt="step">
+        </div>
+        <p>
+          Сдана приемка электромонтажа объекта под контролем специалиста Виталия. Поклеены обоей второй бригадой в
+          коридоре, кухне и спальне. Нашими специалистами установлена часть конструкций для установки встроенной мебели.
+        </p>
+        <div class="progress__steps-images">
+          <img src="/images/project-slide.png" alt="step">
+          <img src="/images/project-slide.png" alt="step">
+        </div>
+        <p>До и после ремонта квартиры 42 м2</p>
+        <div class="before-after">
+          <div class="images">
+            <img src="/images/before.png" alt="До" class="before">
+            <div class="after-wrap">
+              <img src="/images/after.jpg" alt="После" class="after">
+            </div>
+            <div class="divider">
+              <span>
+                <svg class="icon" width="10" height="20">
+                  <use href="/images/sprite.svg#arr-yellow" fill="currentColor"></use>
+                </svg>
+                <svg class="icon-reverse" width="10" height="20">
+                  <use href="/images/sprite.svg#arr-yellow" fill="currentColor"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="review-client">
+  <img class="review-client__bg" src="/images/light-bg.svg" alt="bg">
+  <div class="wrap">
+    <div class="review-client__wrapper">
+      <h2 class="review-client__title">
+        Отзывы клиента
+      </h2>
+      <div class="review-client__box">
+        <div class="review-client__slide">
+          <video class="review-client__slide-video" playsinline preload="none" poster="/images/person.png">
+            <source src="/videos/one.mp4" type="video/mp4" />
+            Ваш браузер не поддерживает видео.
+          </video>
+          <button type="button" class="review-client__slide-play video-play-btn" data-video-src="/videos/one.mp4">
+            <svg class="icon" width="72" height="72">
+              <use href="/images/sprite.svg#play" fill="currentColor"></use>
+            </svg>
+          </button>
+          <div class="review-client__slide-footer">
+            Выше всех похвал!
+          </div>
+        </div>
+        <picture>
+          <source srcset="/images/mira-paper@2x.webp 2x, /images/mira-paper.webp 1x" type="image/webp">
+          <source srcset="/images/mira-paper@2x.png 2x, /images/mira-paper.png 1x" type="image/png">
+          <img src="/images/mira-paper.png" class="review-client__image">
+        </picture>
+      </div>
+    </div>
+    <div class="review-client__wrapper">
+      <h2 class="review-client__title">
+        Отзывы клиента
+      </h2>
+      <div class="review-client__box">
+        <img src="/images/before.png" alt="" loading="lazy" class="photo-review">
+        <picture>
+          <source srcset="/images/mira-paper@2x.webp 2x, /images/mira-paper.webp 1x" type="image/webp">
+          <source srcset="/images/mira-paper@2x.png 2x, /images/mira-paper.png 1x" type="image/png">
+          <img src="/images/mira-paper.png" class="review-client__image">
+        </picture>
+        <div class="review-client__text">
+          <div class="review-client__text__title">
+            Ремонт для молодой семьи
+          </div>
+          <p>
+            Мы обратились в команию Мирастрой и ни разу не пожалели об этом. Оформили договор на ремонт «под ключ» с
+            мебелью. Порадовало, что работы начали быстро, а смета была составлена полностью и прозрачно. Хотим выразить
+            благодарность прорабу Владимиру за высокий профессионализм
+          </p>
+          <p>— семья Сидоровых</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <div class="dashform" id="dashform">
+  <div class="wrap">
+    <div class="dashform__wrapper">
+      <div class="dashform__info">
+        <h2 class="dashform__title">
+          Узнайте точную стоимость вашего ремонта
+        </h2>
+        <div class="dashform__text">
+          Мы подготовим точный расчёт: все этапы, все материалы,
+          реальные сроки и окончательную цену, которая больше не
+          изменится после заключения договора.
+          Один расчёт — один результат. Все честно!
+        </div>
+        <form class="dashform__form">
+          <div class="field">
+            <input type="text" class="dashform__form-field">
+            <label class="label">Ваше имя</label>
+            <!-- <div class="field__error">asa</div> -->
+          </div>
+          <div class="field">
+            <input type="text" class="dashform__form-field">
+            <label class="label">Ваш номер телефона</label>
+            <!-- <div class="field__error">asa</div> -->
+          </div>
+          <div class="dashform__form-agree">
+            Нажимая на кнопку вы соглашаетесь с политикой конфиденциальности в отношении пользовательских данных
+          </div>
+          <button type="submit" class="dashform__form-action">Рассчитать мой ремонт</button>
+        </form>
+      </div>
+      <div class="dashform__box">
+        <picture>
+          <source srcset="/images/dashform-mob@2x.webp 2x, /images/dashform-mob.webp 1x" media="(max-width: 1240px)"
+            type="image/webp">
+          <source srcset="/images/dashform-mob@2x.png 2x, /images/dashform-mob.png 1x" media="(max-width: 1240px)"
+            type="image/png">
+          <source srcset="/images/dashform@2x.webp 2x, /images/dashform.webp 1x" type="image/webp">
+          <source srcset="/images/dashform@2x.png 2x, /images/dashform.png 1x" type="image/png">
+          <img src="/images/dashform.png" alt="" class="dashform__box-image">
+        </picture>
+        <div class="dashform__box-text">
+          Не хочется заполнять формы? Напишите нам — ответим в течение 15 минут.
+        </div>
+        <a href="" class="dashform__box-link">
+          <svg class="icon" width="30" height="30">
+            <use href="/images/sprite.svg#whatsapp" fill="currentColor"></use>
+          </svg>
+          +7 (909) 775 12 28
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="works">
+  <img class="works__bg" src="/images/dark-bg.svg" alt="bg">
+  <div class="wrap">
+    <div class="works__hdr">
+      <h2 class="works__title">
+        Наши работы
+      </h2>
+      <div class="works__controls">
+        <button class="works__controls-prev" type="button">
+          <svg class="icon" width="56" height="24">
+            <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+          </svg>
+        </button>
+        <button class="works__controls-next" type="button">
+          <svg class="icon" width="56" height="24">
+            <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="works__slider swiper outer-swiper">
+    <div class="swiper-wrapper">
+      <div class="works__item swiper-slide">
+        <div class="works__item-images swiper inner-swiper" data-gallery-root>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide ">
+              <div class="works__item-wrap works__slide">
+                <video class="works__slide-video" playsinline preload="none" poster="/images/work-slide.png">
+                  <source src="/videos/one.mp4" type="video/mp4" />
+                  Ваш браузер не поддерживает видео.
+                </video>
+                <button type="button" class="works__slide-play video-play-btn" data-video-src="/videos/one.mp4">
+                  <svg class="icon" width="72" height="72">
+                    <use href="/images/sprite.svg#play" fill="currentColor"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="works__item-main">
+          <div class="swiper-pagination inner-pagination"></div>
+          <div class="works__item-title">
+            Ремонт 2х ком., 42 м2
+          </div>
+          <div class="works__item-text">
+            Под ключ с мебелью за 56 дней.Стоимость работ: 35 000 руб/м2. Калининград, ул.Толстикова, ЖК «Мичуринский
+            парк» ул.Толстикова, ЖК «Мичуринский
+            парк»
+          </div>
+          <a href="" class="works__item-more">
+            Подробнее
+            <svg class="icon" width="32" height="24">
+              <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="works__item swiper-slide">
+        <div class="works__item-images swiper inner-swiper" data-gallery-root>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="works__item-main">
+          <div class="swiper-pagination inner-pagination"></div>
+          <div class="works__item-title">
+            Ремонт 2х ком., 42 м2
+          </div>
+          <div class="works__item-text">
+            Под ключ с мебелью за 56 дней.Стоимость работ: 35 000 руб/м2. Калининград, ул.Толстикова, ЖК «Мичуринский
+            парк» ул.Толстикова, ЖК «Мичуринский
+            парк»
+          </div>
+          <a href="" class="works__item-more">
+            Подробнее
+            <svg class="icon" width="32" height="24">
+              <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="works__item swiper-slide">
+        <div class="works__item-images swiper inner-swiper" data-gallery-root>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="works__item-main">
+          <div class="swiper-pagination inner-pagination"></div>
+          <div class="works__item-title">
+            Ремонт 2х ком., 42 м2
+          </div>
+          <div class="works__item-text">
+            Под ключ с мебелью за 56 дней.Стоимость работ: 35 000 руб/м2. Калининград, ул.Толстикова, ЖК «Мичуринский
+            парк» ул.Толстикова, ЖК «Мичуринский
+            парк»
+          </div>
+          <a href="" class="works__item-more">
+            Подробнее
+            <svg class="icon" width="32" height="24">
+              <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="works__item swiper-slide">
+        <div class="works__item-images swiper inner-swiper" data-gallery-root>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="works__item-main">
+          <div class="swiper-pagination inner-pagination"></div>
+          <div class="works__item-title">
+            Ремонт 2х ком., 42 м2
+          </div>
+          <div class="works__item-text">
+            Под ключ с мебелью за 56 дней.Стоимость работ: 35 000 руб/м2. Калининград, ул.Толстикова, ЖК «Мичуринский
+            парк» ул.Толстикова, ЖК «Мичуринский
+            парк»
+          </div>
+          <a href="" class="works__item-more">
+            Подробнее
+            <svg class="icon" width="32" height="24">
+              <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="works__item swiper-slide">
+        <div class="works__item-images swiper inner-swiper" data-gallery-root>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/images/work-slide.png">
+                <img class="works__item-image" src="/images/work-slide.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="works__item-main">
+          <div class="swiper-pagination inner-pagination"></div>
+          <div class="works__item-title">
+            Ремонт 2х ком., 42 м2
+          </div>
+          <div class="works__item-text">
+            Под ключ с мебелью за 56 дней.Стоимость работ: 35 000 руб/м2. Калининград, ул.Толстикова, ЖК «Мичуринский
+            парк» ул.Толстикова, ЖК «Мичуринский
+            парк»
+          </div>
+          <a href="" class="works__item-more">
+            Подробнее
+            <svg class="icon" width="32" height="24">
+              <use href="/images/sprite.svg#arrow" fill="currentColor"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="works__invite">
+      <picture>
+        <source srcset="/images/house-mob@2x.webp 2x, /images/house-mob.webp 1x" media="(max-width: 1240px)"
+          type="image/webp">
+        <source srcset="/images/house-mob@2x.png 2x, /images/house-mob.png 1x" media="(max-width: 1240px)"
+          type="image/png">
+        <source srcset="/images/house@2x.webp 2x, /images/house.webp 1x" type="image/webp">
+        <source srcset="/images/house@2x.png 2x, /images/house.png 1x" type="image/png">
+        <img src="/images/house.png" alt="" class="works__invite-img">
+      </picture>
+      <div class="works__invite-info">
+        <div class="works__invite-title">
+          Приглашаем посмотреть, как мы работаем
+        </div>
+        <div class="works__invite-text">
+          Посетите действующие наши проекты и убедитесь в подходе и качестве работ в ремонте нашей команды. Организуем
+          экскурсию в удобное для вас время.
+        </div>
+        <a href="#dashform" class="works__invite-action">
+          Оставить заявку
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <div class="video-modal" hidden>
       <div class="video-modal__backdrop"></div>
